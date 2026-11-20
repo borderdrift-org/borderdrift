@@ -4,6 +4,11 @@
 > is built. Each question in [section 13](#13-questions-for-the-maintainers) has a recommended
 > answer; "approve with the recommendations" answers them all. More requests may be added before
 > approval.
+>
+> **Updated 2026-11-20:** the project is renamed **BorderDrift** (question 10 is settled), and a
+> **show-ready slice** (S1–S6 in [section 14](#14-order-of-work)) is proposed to come first, so the
+> site is good enough to show people before the longer performance and detail work
+> (question 13).
 
 Phases 1–5 built a map that is honest about its sources and covers the world. Phase 6 makes it
 **good to use and good to watch**, for a visitor who has never heard of OpenHistoricalMap:
@@ -430,23 +435,52 @@ It is only started if steps 2–15 leave room, and it can be a Phase 7 headline 
 10. **The interface** (section 10): mockups first (step 3), tried with a few people, then one
    build (step 7), with light, dark and high-contrast themes and a self-hosted open-license UI
    font? *Recommended: yes.*
-    **The name.** The current name is very close to an existing commercial site
-    (`chronoatlas.nl`), so a rename before any launch or marketing is planned. A hyphen or a
-    capital letter doesn't separate them. Candidates are checked (existing sites and products,
-    GitHub, domains, trademark registers) before anything is renamed; addresses and the repository
-    keep `chronoatlas` until then. Renaming is the maintainers' outward-facing step. *Recommended:
-    rename, choosing a distinctive word and using a plain description ("borders through time,
-    with sources") as the tagline.*
+    **The name.** *Settled 2026-11-20:* the old name was very close to an existing commercial
+    site, so the maintainers renamed the project **BorderDrift** (`borderdrift` in addresses):
+    the organization `borderdrift-org`, the repository `borderdrift-org/borderdrift`, and the
+    account `borderdrift`. The site is now at https://borderdrift-org.github.io/borderdrift/; the
+    old address no longer works. A plain description ("borders through time, with sources") can
+    still serve as the tagline.
 11. **The launch showcase** (section 11): China 1937–45 after the interface work, Southeast Asia
    measured but not imported in this phase? *Recommended: yes.*
 12. **New requests** the maintainers add before approval are placed in the order in section 14 by
    the same rule: measure first, then what changes tile size or speed, then what adds on top.
+13. **Show-ready slice first** (added 2026-11-20; section 14): build S1–S6 before step 2, so the
+   site can be shown to people sooner, and keep the rest of the order as it is? *Recommended: yes.
+   None of S1–S6 changes tiles, layers or speed, so none is built twice; the map's own look
+   (palette, edge line, hatch) still waits for step 7, after the performance and detail work that
+   changes its layers.*
 
 ## 14. Order of work
 
 Small steps, each committed, explained, and checked, as in earlier phases. The order follows one
 rule: **measure first, then change what everything else depends on (speed, tile detail, the look and
 layout), then add features on top**, so nothing is built twice.
+
+### Show-ready slice (proposed 2026-11-20, question 13)
+
+The site should be good enough to show people before the longer work below. These steps come
+**after step 1 and before step 2**. They change the page around the map, not the tiles, layers or
+speed, so they can't be undone by later steps. Each is its own small pull request, ordered by how
+much it changes a first visit.
+
+| Step | What | Effort |
+|---|---|---|
+| S1 | **An opening view where something happens:** open on Manchuria 1931–33, where the events are (markers on the timeline, the pulse on the map, contested hatching), instead of a still frame in 1937. The key starts folded; the "Early preview" paragraph becomes a one-time hint that can be dismissed. The exact opening day comes from an event already in `data/events/`. | low |
+| S2 | **Play as the first action** (moved from step 9): a large play button and a big date readout on the timeline. Plays stay inside one era until step 6, so a demo never shows a blank map. | medium |
+| S3 | **Share preview** (moved from step 9): title, description and one image for links pasted into chat apps, using the full new address (a preview image needs an absolute URL). | low |
+| S4 | **README that shows it in five seconds:** a GIF of the timeline playing (recorded by a script with the browser, so it can be re-recorded), one sentence on what BorderDrift is, an "Open the map" link, and the long status block moved to the roadmap. | low |
+| S5 | **Design direction** (step 3, brought forward): two or three mockups of the top bar, key and panel, desktop and phone, with the BorderDrift wordmark; the maintainers choose. | medium |
+| S6 | **The slim top bar, compact key and calmer panel** (the layout part of step 7, brought forward): name and wordmark, the view switch as a clear two-way toggle, Copy link, and a "Key" button that lists only what's on screen; the panel's summary first, with sections that open on demand. The panel's logic (`model.ts`) and the address format don't change. | high |
+
+Step 7 then keeps the rest: the map's own look (palette, edge-of-data line, "no data" hatch,
+labels), themes, watch mode, the coverage ribbon, the first-visit hint's final form, and
+`docs/design.md`. Step 9 keeps the About and Contribute pages and the events-gap report.
+
+Whether to merge OpenHistoricalMap's Europe data (pull requests 48 and 49) is a separate data
+decision; the slice doesn't depend on it.
+
+### The rest of the phase
 
 | Step | What | Effort |
 |---|---|---|
@@ -474,9 +508,9 @@ Steps 4–7 each end with a repeat of step 2's measures, so speed can't quietly 
 The vision is large on purpose. These are the levers, in the order to reach for them:
 
 1. **Cut lines.** If the phase runs long, cut in this order: your local area (step 16), flags
-   (13), water names (12), the lens (11), search (10). Steps 1–9 (fast, close-up, smooth,
-   redesigned, a date box, a welcome), the launch showcase (14) and the launch check (15) always
-   stay: shipping those alone is a complete phase, and the cut steps move to Phase 7 whole.
+   (13), water names (12), the lens (11), search (10). The show-ready slice (S1–S6), steps 1–9
+   (fast, close-up, smooth, redesigned, a date box, a welcome), the launch showcase (14) and the
+   launch check (15) always stay: shipping those alone is a complete phase, and the cut steps move to Phase 7 whole.
 2. **Measure before building.** Step 2 exists so a big idea is sized before it's started; a step
    whose measurement is bad is brought back, not pushed through.
 3. **One step in flight,** each shippable on its own, so the live site is never left half-changed.
@@ -499,7 +533,7 @@ The vision is large on purpose. These are the levers, in the order to reach for 
 - **Coast gaps:** the maintainers lean toward option B (a flagged, build-only approximate margin).
 - **Launch showcase after the interface work:** China 1937–45 is shown once the interface and
   visitor features are done, and the interface is redesigned before they are built into it.
-- **Name:** the current name collides with an existing commercial site, so a rename is planned;
-  the choice waits for the name check (question 10).
+- **Name (settled 2026-11-20):** renamed **BorderDrift**, because the old name collided with an
+  existing commercial site (question 10).
 - **No scripted stories:** the map is the storyteller; events are chosen by what the map needs.
 - **Report by drawing:** considered and not added; the existing "Report a problem" link is enough.
