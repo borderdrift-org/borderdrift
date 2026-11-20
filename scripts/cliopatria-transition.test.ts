@@ -33,4 +33,17 @@ describe('South Sudan’s independence on the administered map', () => {
     });
     expect(active.map((a) => [a.subject, a.shape]).sort()).toEqual(expected);
   });
+
+  it('credits Cliopatria for the shape only, and the bulletin for the date', () => {
+    const changed = records.filter((a) => a.start === '2011-07-09' || a.end === '2011-07-09');
+    expect(changed.map((a) => a.id).sort()).toEqual([`${sudan}-1992`, `${sudan}-2014`, `${southSudan}-2014`]);
+    for (const a of changed) {
+      const [cliopatria, bulletin] = a.sources;
+      expect(cliopatria.source).toBe('cliopatria');
+      expect(cliopatria.note).toMatch(/is not\. It comes from the other source cited/);
+      expect(bulletin.source).toBe('dos-guidance-bulletin-30');
+      // The row's own whole years stay in its notes.
+      expect(a.notes).toMatch(/this row covers the whole years/);
+    }
+  });
 });

@@ -93969,9 +93969,11 @@
   sources:
     - source: cliopatria
       locator: '"Republic of Sudan", 1992 to 2013'
+      note: The shape is Cliopatria's; the end date, 2011-07-09, is not. It comes from the other source cited.
     - source: dos-guidance-bulletin-30
       locator: p. 1, Background and §1(a) (independence); pp. 1–2, §§2–3 (boundary and Abyei)
-  notes: Cliopatria supplies the shape and original year range. Its rows do not distinguish territorial control from legal sovereignty. ChronoAtlas dates the split to July 9, 2011, following Guidance Bulletin No. 30, which describes Abyei as disputed.
+      note: "For the date of the change only: South Sudan's independence on 9 July 2011."
+  notes: "Cliopatria maps territory year by year: this row covers the whole years 1992 to 2013. It doesn't distinguish control from legal sovereignty. BorderDrift dates this change to 9 July 2011, South Sudan's independence, following Guidance Bulletin No. 30; Cliopatria gives only whole years. The bulletin describes Abyei as disputed; Abyei is drawn here as Cliopatria draws it."
 - id: cliopatria-republic-of-sudan-2014
   relation: controls
   subject: cliopatria-republic-of-sudan
@@ -93981,9 +93983,11 @@
   sources:
     - source: cliopatria
       locator: '"Republic of Sudan", 2014 to 2023'
+      note: The shape is Cliopatria's; the start date, 2011-07-09, is not. It comes from the other source cited.
     - source: dos-guidance-bulletin-30
       locator: p. 1, Background and §1(a) (independence); pp. 1–2, §§2–3 (boundary and Abyei)
-  notes: Cliopatria supplies the shape and original year range. Its rows do not distinguish territorial control from legal sovereignty. ChronoAtlas dates the split to July 9, 2011, following Guidance Bulletin No. 30, which describes Abyei as disputed.
+      note: "For the date of the change only: South Sudan's independence on 9 July 2011."
+  notes: "Cliopatria maps territory year by year: this row covers the whole years 2014 to 2023. It doesn't distinguish control from legal sovereignty. BorderDrift dates this change to 9 July 2011, South Sudan's independence, following Guidance Bulletin No. 30; Cliopatria gives only whole years. The bulletin describes Abyei as disputed; Abyei is drawn here as Cliopatria draws it."
 - id: cliopatria-republic-of-sudan-2024
   relation: controls
   subject: cliopatria-republic-of-sudan
@@ -102973,9 +102977,11 @@
   sources:
     - source: cliopatria
       locator: '"South Sudan", 2014 to 2023'
+      note: The shape is Cliopatria's; the start date, 2011-07-09, is not. It comes from the other source cited.
     - source: dos-guidance-bulletin-30
       locator: p. 1, Background and §1(a) (independence); pp. 1–2, §§2–3 (boundary and Abyei)
-  notes: Cliopatria supplies the shape and original year range. Its rows do not distinguish territorial control from legal sovereignty. ChronoAtlas dates the split to July 9, 2011, following Guidance Bulletin No. 30, which describes Abyei as disputed.
+      note: "For the date of the change only: South Sudan's independence on 9 July 2011."
+  notes: "Cliopatria maps territory year by year: this row covers the whole years 2014 to 2023. It doesn't distinguish control from legal sovereignty. BorderDrift dates this change to 9 July 2011, South Sudan's independence, following Guidance Bulletin No. 30; Cliopatria gives only whole years. The bulletin describes Abyei as disputed; Abyei is drawn here as Cliopatria draws it."
 - id: cliopatria-south-sudan-2024
   relation: controls
   subject: cliopatria-south-sudan

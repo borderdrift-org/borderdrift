@@ -29,7 +29,6 @@ See [docs/data-sources.md](docs/data-sources.md) for the full evaluation.
 
 | Document | Source | License |
 |---|---|---|
-| [Guidance Bulletin No. 30: South Sudan – Sudan Boundaries](https://data.geodata.state.gov/guidance/DoS_Bulletin_30-South-Sudan-Sudan-2011.pdf) | U.S. Department of State, Office of the Geographer and Global Issues, July 20, 2011 | Cited for the independence date and cartographic guidance. |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | [Contributor Covenant 3.0](https://www.contributor-covenant.org/version/3/0/) | CC BY-SA 4.0 |
 | [LICENSE](LICENSE) | MIT License text, from GitHub's license templates | Standard license text |
 | [data/LICENSE](data/LICENSE) | [CC0 1.0 legal code](https://creativecommons.org/publicdomain/zero/1.0/legalcode) | Creative Commons legal code |

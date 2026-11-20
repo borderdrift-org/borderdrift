@@ -428,6 +428,16 @@ some environments, so the "Measure OpenHistoricalMap's coverage" workflow runs i
     cover the same land.
   - The zip is read by `scripts/lib/zip.ts`, and the import needs a larger Node memory limit
     (set in its npm script).
+  - **Sourced date corrections** (2026-11-20, the maintainers' decision after the first outside
+    contribution, pull request 56): `data/imports/cliopatria/date-transitions.json` can move the
+    year boundary between existing rows to an exact day, when a named source gives it. The
+    import checks each original endpoint (`replaces`) and stops if it has changed; shapes, IDs,
+    and Cliopatria's own years (in the locator and notes) are kept. Each record credits each
+    source only for what it says: Cliopatria's citation gets a `note` that the changed date isn't
+    its, and the dating source is added as a second citation. Never use it to invent a change
+    Cliopatria doesn't have, or to change a shape. The first case: Sudan and South Sudan split on
+    9 July 2011 (South Sudan's independence), from the US State Department's Guidance Bulletin
+    No. 30. `scripts/cliopatria-transition.test.ts` checks it.
 - **Contested areas** (`scripts/lib/contested.ts`, Phase 2 step 9):
   - **What they are:** where the default map's administering polity and a de jure source's
     sovereign or occupying state differ on the same days. The crosswalk decides what counts as

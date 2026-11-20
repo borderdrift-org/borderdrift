@@ -184,8 +184,13 @@ async function main(): Promise<void> {
           throw new Error(`Review date-transitions.json: expected ${id} ${endpoint} to be ${transition.replaces}.`);
         }
         assertion[endpoint] = transition.date;
+        // Each citation is credited only for what it says: Cliopatria for the shape and its own
+        // whole years (kept in its locator), the transition's source for the changed date.
+        const [cliopatria] = assertion.sources;
+        cliopatria.note = `The shape is Cliopatria's; the ${endpoint} date, ${transition.date}, is not. It comes from the other source cited.`;
         assertion.sources.push({ ...transition.citation });
-        assertion.notes = transition.notes;
+        // Keep the row's own note (its whole years), then say why the date differs.
+        assertion.notes = `${assertion.notes} ${transition.notes}`;
       }
     }
   }
