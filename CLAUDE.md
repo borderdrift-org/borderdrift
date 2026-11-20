@@ -328,7 +328,7 @@ with an effort setting for each step. The ones that affect everyday work:
 
 **Phase 6 (2026-11-20): only part of the plan is approved.** The plan is in
 [docs/phase-6-plan.md](docs/phase-6-plan.md#16-decisions); its questions 1–12 are still a draft.
-Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and steps S1 and S2. The ones that
+Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and steps S1 to S3. The ones that
 affect everyday work:
 
 - **The opening view** (S1) is in `src/opening.ts`: the day of `OPENING_EVENT`
@@ -347,6 +347,14 @@ affect everyday work:
 - **The play button** has a visible label on wider screens (`.timeline-play-label`, hidden on
   phones) and the class `timeline-play-invite` until the first play, which pulses only under
   `prefers-reduced-motion: no-preference`.
+- **The share preview** (S3): Open Graph and Twitter tags in `index.html`, with absolute
+  addresses (crawlers run no scripts and never see the `#…` part, so every link gets the same
+  preview). `public/preview.png` is 1200×630: the site at `#d=1934-06-01&m=4/42.5/121`, with the
+  "Early preview" note dismissed and every layer whose ID starts with `contested`, `baseline`,
+  `differ`, `dejure`, `second` or `data-edge` hidden (`map.setLayoutProperty(id, 'visibility',
+  'none')` in the dev console), so it shows only OpenHistoricalMap (CC0) and Natural Earth (public
+  domain) and stays CC0 (listed in `CREDITS.md`). Never make it from a view that shows CShapes
+  (NC-SA) or Cliopatria (CC BY, needs credit) without crediting them in the image.
 
 **CShapes decisions (2026-09-27)**, made while importing it:
 

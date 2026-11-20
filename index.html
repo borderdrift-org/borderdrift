@@ -10,6 +10,27 @@
       name="description"
       content="An open-source interactive map of how the world's borders changed through history, with every border and event traced to a named source."
     />
+    <!-- The preview chat apps and social sites show for a shared link (Phase 6 step S3). Crawlers
+         don't run scripts or see the part of a link after "#", so every link gets this one
+         preview, and the addresses must be absolute. public/preview.png shows only
+         OpenHistoricalMap (CC0) and Natural Earth (public domain) layers; CLAUDE.md says how it
+         was made. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BorderDrift" />
+    <meta property="og:title" content="BorderDrift: borders through time, with sources" />
+    <meta
+      property="og:description"
+      content="An open-source interactive map of how the world's borders changed through history, with every border and event traced to a named source."
+    />
+    <meta property="og:url" content="https://borderdrift-org.github.io/borderdrift/" />
+    <meta property="og:image" content="https://borderdrift-org.github.io/borderdrift/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The BorderDrift map on 1 June 1934, showing Manchukuo, China, Korea and Japan, with the timeline below."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <!-- Text in elements with data-i18n comes from the translation catalogs (src/i18n);

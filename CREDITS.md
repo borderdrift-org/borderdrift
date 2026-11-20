@@ -29,6 +29,7 @@ See [docs/data-sources.md](docs/data-sources.md) for the full evaluation.
 
 | Document | Source | License |
 |---|---|---|
+| [public/preview.png](public/preview.png) (the share preview) | A screenshot of this site showing only OpenHistoricalMap's borders (CC0 1.0) over Natural Earth (public domain); the layers built from CShapes and Cliopatria were hidden for it | CC0 1.0, like our own data |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | [Contributor Covenant 3.0](https://www.contributor-covenant.org/version/3/0/) | CC BY-SA 4.0 |
 | [LICENSE](LICENSE) | MIT License text, from GitHub's license templates | Standard license text |
 | [data/LICENSE](data/LICENSE) | [CC0 1.0 legal code](https://creativecommons.org/publicdomain/zero/1.0/legalcode) | Creative Commons legal code |

@@ -10,7 +10,7 @@
 > site is good enough to show people before the longer performance and detail work
 > (question 13).
 >
-> **Approved 2026-11-20: question 13 (the show-ready slice first), and steps S1 and S2.** The rest of the
+> **Approved 2026-11-20: question 13 (the show-ready slice first), and steps S1 to S3.** The rest of the
 > plan, including questions 1–12, is still a draft for the maintainers to review.
 
 Phases 1–5 built a map that is honest about its sources and covers the world. Phase 6 makes it
@@ -547,6 +547,11 @@ The vision is large on purpose. These are the levers, in the order to reach for 
   on the last day of the era it's in (`eraEnd`, `src/map/eras.ts`), with a note under the date, so
   the map never goes empty while the next era's tiles load; pressing play again carries on. Step 6
   (smooth era changes) can lift the pause.
+- **Step S3, the share preview:** Open Graph and Twitter tags in `index.html`, with absolute
+  addresses, and one image, `public/preview.png` (1200×630): the map on 1 June 1934 over
+  Manchuria, showing only OpenHistoricalMap and Natural Earth, so the image is CC0 like our own
+  data. (Seen while making it: Manchukuo and China get nearly the same fill though they share a
+  border. That's for step 7, the map's look.)
 
 Settled before approval (2026-09-29):
 
