@@ -326,6 +326,20 @@ with an effort setting for each step. The ones that affect everyday work:
   its own `Area`, credited to it.
 - **Translations** are published only after a native speaker's review.
 
+**Phase 6 (2026-11-20): only part of the plan is approved.** The plan is in
+[docs/phase-6-plan.md](docs/phase-6-plan.md#16-decisions); its questions 1–12 are still a draft.
+Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and step S1. The ones that
+affect everyday work:
+
+- **The opening view** (S1) is in `src/opening.ts`: the day of `OPENING_EVENT`
+  (`mukden-incident-1931`), which `src/opening.test.ts` checks against the event file, and a
+  camera position over Manchuria. Choose a new opening event from `data/events/`, never a date
+  from memory.
+- **The map key starts folded** on every screen (no `open` in `index.html`).
+- **The "Early preview" note** is hidden until `main.ts` reads `localStorage`
+  (`borderdrift.previewNoticeDismissed`); "Got it" sets it. Every storage call is in `try`, so a
+  browser that blocks storage just shows the note again. Phones still don't show it at all.
+
 **CShapes decisions (2026-09-27)**, made while importing it:
 
 - **Columns from the R package:** its status, owner, and "borders defined" columns come from the

@@ -14,6 +14,7 @@ import { civilToJdn, formatDay } from './dates/index.ts';
 import { getLocale, pickLocale, setLocale, t } from './i18n/index.ts';
 import type { MessageKey } from './i18n/index.ts';
 import { HistoricalLayers } from './map/historical';
+import { DEFAULT_VIEW } from './opening.ts';
 import type { BorderView } from './map/historical';
 import { TerritoryPanel } from './panel/panel';
 import type { Selection } from './panel/panel';
@@ -31,9 +32,7 @@ const TODAY = civilToJdn(now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTC
 const FIRST_DAY = civilToJdn(-9999, 1, 1); // 10,000 BCE
 const clampDay = (day: number) => Math.min(TODAY, Math.max(FIRST_DAY, day));
 
-// Without a link, open in mid-1937 over East Asia, the showcase period and region. This is only
-// where the view starts; it makes no claim about any event or border.
-const DEFAULT_VIEW = { day: civilToJdn(1937, 7, 1), zoom: 3, lat: 35, lng: 115 };
+// Without a link, the view opens where the sourced events are (src/opening.ts).
 const fromUrl = parseHash(location.hash);
 
 // --- Language -----------------------------------------------------------------------------------
@@ -164,10 +163,26 @@ function select(next: Selection | null, how: 'click' | 'close' | 'link'): void {
 // recorded in the address: it's a view of the date, which the address already has.
 const nearbyButton = document.getElementById('nearby-button')!;
 
-// The map key starts folded on phones (and short landscape screens), so the map has room; a tap on
-// "Map key" opens it.
-const mapKey = document.querySelector<HTMLDetailsElement>('.map-key')!;
-if (matchMedia('(max-width: 600px), (max-height: 500px)').matches) mapKey.open = false;
+// The map key starts folded on every screen (Phase 6 step S1), so the map comes first; a click on
+// "Map key" opens it. That's set in index.html, with no `open` on the <details>.
+
+// The "Early preview" note shows until the visitor dismisses it, then stays away. It's remembered
+// in this browser only; if the browser blocks storage, the note simply shows again next visit.
+const NOTICE_DISMISSED = 'borderdrift.previewNoticeDismissed';
+const notice = document.querySelector<HTMLElement>('.app-notice')!;
+try {
+  notice.hidden = localStorage.getItem(NOTICE_DISMISSED) === '1';
+} catch {
+  notice.hidden = false;
+}
+notice.querySelector('button')!.addEventListener('click', () => {
+  notice.hidden = true;
+  try {
+    localStorage.setItem(NOTICE_DISMISSED, '1');
+  } catch {
+    // Storage blocked: the note comes back next visit, which is harmless.
+  }
+});
 
 // The view switch: borders as administered (OpenHistoricalMap) or as legally recognized (CShapes).
 const viewButtons = [...document.querySelectorAll<HTMLButtonElement>('.view-switch button')];

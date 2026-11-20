@@ -7,6 +7,8 @@
 export const en = {
   'app.previewNotice':
     'Early preview. Borders as administered come from OpenHistoricalMap in East Asia, 1900–1950, and from Cliopatria elsewhere; legal borders from CShapes 2.0. Click a territory for details.',
+  // Dismisses the "Early preview" note for good (in this browser).
+  'app.dismissNotice': 'Got it',
   'app.mapLabel': 'Map',
   'app.title': 'BorderDrift · {date}',
   'legend.title': 'Map key',

@@ -118,7 +118,36 @@ body {
   margin-top: 6px;
 }
 
-/* The map key: a "Map key" toggle, open on wider screens and folded on phones (src/main.ts). */
+/* The first-visit note and its "Got it" button (src/main.ts). */
+.app-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.app-notice[hidden] {
+  display: none;
+}
+
+.notice-dismiss {
+  flex: none;
+  margin-top: 2px;
+  padding: 2px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  background: #f6f8fa;
+  font: inherit;
+  font-size: 0.75rem;
+  color: #1f2328;
+  cursor: pointer;
+}
+
+.notice-dismiss:focus-visible {
+  outline: 2px solid #0969da;
+  outline-offset: 2px;
+}
+
+/* The map key: a "Map key" toggle that starts folded on every screen (index.html). */
 .map-key {
   margin-top: 6px;
 }

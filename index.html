@@ -39,7 +39,12 @@
           </button>
         </div>
       </div>
-      <p class="app-notice" data-i18n="app.previewNotice"></p>
+      <!-- A note for first visits, until dismissed (src/main.ts). Hidden until the script checks
+           whether this browser dismissed it before, so it never flashes. -->
+      <div class="app-notice" hidden>
+        <p data-i18n="app.previewNotice"></p>
+        <button type="button" class="notice-dismiss" data-i18n="app.dismissNotice"></button>
+      </div>
       <!-- Which borders the map shows (src/main.ts): as administered, or as legally recognized. -->
       <div class="view-controls">
         <div class="view-switch" role="group" data-i18n-label="view.label">
@@ -54,8 +59,8 @@
           <span class="label-long" data-i18n="view.second"></span><span class="label-short" data-i18n="view.secondShort"></span>
         </button>
       </div>
-      <!-- The map key: open on wider screens, folded on phones (src/main.ts). -->
-      <details class="map-key" open>
+      <!-- The map key: starts folded on every screen, so the map comes first (Phase 6 step S1). -->
+      <details class="map-key">
       <summary data-i18n="legend.title"></summary>
       <p class="legend">
         <span class="legend-item"><span class="legend-no-data" aria-hidden="true"></span><span data-i18n="legend.noData"></span></span>

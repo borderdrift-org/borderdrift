@@ -9,6 +9,9 @@
 > **show-ready slice** (S1–S6 in [section 14](#14-order-of-work)) is proposed to come first, so the
 > site is good enough to show people before the longer performance and detail work
 > (question 13).
+>
+> **Approved 2026-11-20: question 13 (the show-ready slice first), and step S1.** The rest of the
+> plan, including questions 1–12, is still a draft for the maintainers to review.
 
 Phases 1–5 built a map that is honest about its sources and covers the world. Phase 6 makes it
 **good to use and good to watch**, for a visitor who has never heard of OpenHistoricalMap:
@@ -528,7 +531,18 @@ The vision is large on purpose. These are the levers, in the order to reach for 
 
 ## 16. Decisions
 
-*Recorded here when the maintainers approve the plan.* Settled before approval (2026-09-29):
+*Recorded here when the maintainers approve the plan.*
+
+**Approved 2026-11-20:**
+
+- **Question 13:** the show-ready slice (S1–S6) comes first, after step 1 and before step 2.
+- **Step S1, the opening view:** a visit without a link opens on the Mukden incident's date
+  (18 September 1931, from `data/events/mukden-incident-1931.yaml`; `src/opening.ts`, checked by
+  a test) over Manchuria, so the timeline's window holds the map's sourced events. The map key
+  starts folded on every screen, and the "Early preview" note has a "Got it" button that hides it
+  for good in that browser. No event panel opens by itself: the map comes first.
+
+Settled before approval (2026-09-29):
 
 - **Coast gaps:** the maintainers lean toward option B (a flagged, build-only approximate margin).
 - **Launch showcase after the interface work:** China 1937–45 is shown once the interface and
