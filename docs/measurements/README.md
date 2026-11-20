@@ -46,3 +46,40 @@ Only a real graphics card gives real speeds. A short checklist, in Chrome or Edg
 The target (decision 2) is 30 frames a second or better while panning, zooming and playing, and
 next to nothing when idle. When these numbers are shared with the assistant, it records them
 here without any device details beyond the kind of machine ("an integrated-graphics laptop").
+
+## 3. Alignment (2026-11-20)
+
+The raw numbers are in [alignment.md](alignment.md), written by `npm run measure-alignment` from
+the built files (`npm run build-data` first), for 1 June 1934. They answer the maintainers'
+report that small shapes don't line up when zoomed in, and that fills don't reach the ocean
+(the plan's section 2).
+
+**The tiles aren't the cause.** At zoom 7, the border lines the map draws are within 40 m of the
+imported OpenHistoricalMap shapes for 99% of points, both ways (drawn points against the
+source's border, and the source's points against the drawn line), and within 32 m for 95%.
+Zoomed out, the tiles leave out 1–2 km of detail at zooms 3–4 (95th percentile), which is
+smaller than a pixel there. A few points, at most 5.5 km, are where the line-builder's "more than
+2 km out to sea" cut and this measure's coastline differ slightly.
+
+**What does show up close.** From zoom 8, the map enlarges the zoom-7 tiles, and two coarser
+things become visible:
+
+- the import's own simplification, up to 0.005° (about 500 m) from OpenHistoricalMap's line,
+  which is 3–4 pixels at zoom 10;
+- Natural Earth's 1:10m coastline, drawn over the shapes from zoom 4, which is coarser than
+  OpenHistoricalMap's coasts.
+
+So step 5's levers are the right ones, in this order: less simplification at import where the
+source is finer, tiles above zoom 7 where there's the detail, and a matching coast. Each is a size
+trade, which step 5 measures before applying.
+
+**Coasts.** Of the border points within 25 km of Natural Earth's coastline:
+
+- **OpenHistoricalMap:** 95% are out at sea (its country boundaries often include territorial
+  waters; the map already cuts those at the coast), and 5% stop short on land.
+- **Cliopatria:** 28% stop short on land, leaving the "no data" strips along coasts, and they're
+  mostly narrow: a median of 2.7 km, and 14.5 km at the 95th percentile.
+
+That supports option B (decision 3): a margin limited to about the source's resolution would fill
+nearly all of Cliopatria's coastal strips, while the wide ones, real gaps, keep the hatch. Part 3
+measures the strips by area, and checks how Cliopatria's authors say their shapes were made.

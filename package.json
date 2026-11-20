@@ -23,6 +23,7 @@
     "summarize-changes": "node --max-old-space-size=4096 scripts/summarize-changes.ts",
     "suggest-crosswalk": "node --max-old-space-size=4096 scripts/suggest-crosswalk.ts",
     "measure-ohm": "node scripts/measure-ohm.ts",
+    "measure-alignment": "node --max-old-space-size=6144 scripts/measure-alignment.ts",
     "measure-map": "node scripts/measure-map.ts",
     "record-demo": "node scripts/record-demo.ts",
     "build-data": "node scripts/build-data.ts",

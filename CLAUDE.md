@@ -406,6 +406,7 @@ LTS, and the GitHub CLI are installed.
 top of the script), `npm run suggest-crosswalk` (options at the top of the script),
 `npm run record-demo` (the README's GIF, or `-- --preview` the share preview, from `npm run dev`),
 `npm run measure-map` (frame times and layer costs from `npm run dev`, in software; for comparing only),
+`npm run measure-alignment` (drawn borders against their sources and the coast, from `public/data/`),
 `npm run measure-ohm` (OpenHistoricalMap's boundaries by region and period; its server is blocked in
 some environments, so the "Measure OpenHistoricalMap's coverage" workflow runs it on GitHub),
 `npm run build-data`, `npm run import:ohm`, `npm run import:cshapes`, and
