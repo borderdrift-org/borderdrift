@@ -333,7 +333,7 @@ affect everyday work:
 
 - **The opening view** (S1) is in `src/opening.ts`: the day of `OPENING_EVENT`
   (`mukden-incident-1931`), which `src/opening.test.ts` checks against the event file, and a
-  camera position over Manchuria. Choose a new opening event from `data/events/`, never a date
+  camera position over Manchuria (one zoom level further out on phones, `PHONE_ZOOM`). Choose a new opening event from `data/events/`, never a date
   from memory.
 - **The map key starts folded** on every screen (no `open` in `index.html`).
 - **The "Early preview" note** is hidden until `main.ts` reads `localStorage`

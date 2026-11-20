@@ -14,7 +14,7 @@ import { civilToJdn, formatDay } from './dates/index.ts';
 import { getLocale, pickLocale, setLocale, t } from './i18n/index.ts';
 import type { MessageKey } from './i18n/index.ts';
 import { HistoricalLayers } from './map/historical';
-import { DEFAULT_VIEW } from './opening.ts';
+import { DEFAULT_VIEW, PHONE_ZOOM } from './opening.ts';
 import type { BorderView } from './map/historical';
 import { TerritoryPanel } from './panel/panel';
 import type { Selection } from './panel/panel';
@@ -60,7 +60,7 @@ const map = new maplibregl.Map({
   container: mapContainer,
   style: baseMapStyle(),
   center: [fromUrl.lng ?? DEFAULT_VIEW.lng, fromUrl.lat ?? DEFAULT_VIEW.lat],
-  zoom: fromUrl.zoom ?? DEFAULT_VIEW.zoom,
+  zoom: fromUrl.zoom ?? (matchMedia('(max-width: 600px)').matches ? PHONE_ZOOM : DEFAULT_VIEW.zoom),
   attributionControl: { compact: true },
 });
 

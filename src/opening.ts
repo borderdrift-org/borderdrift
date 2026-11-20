@@ -11,3 +11,6 @@ import { civilToJdn } from './dates/index.ts';
 export const OPENING_EVENT = 'mukden-incident-1931';
 
 export const DEFAULT_VIEW = { day: civilToJdn(1931, 9, 18), zoom: 4, lat: 42, lng: 122 };
+
+/** On a phone, one level further out, so Manchuria, Korea and Japan fit beside the header card. */
+export const PHONE_ZOOM = 3;
