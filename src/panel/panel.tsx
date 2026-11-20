@@ -165,28 +165,39 @@ function Shell({ title, subtitle, summary, sheet, onClose, children }: ShellProp
   );
 }
 
+/**
+ * One record in effect on the day, calmly (Phase 6 step S6b): what it says and when, then its
+ * sources, always in view; the border line's precision and the notes open on demand.
+ */
 function Current({ entry }: { entry: CurrentEntry }) {
+  const more = entry.border !== undefined || entry.notes.length > 0;
   return (
     <li class="panel-record">
       <p class="panel-relation">{entry.label}</p>
-      <dl class="panel-dates">
-        <dt>{t('panel.began')}</dt>
-        <dd>{entry.began}</dd>
-        <dt>{t('panel.ended')}</dt>
-        <dd>{entry.ended}</dd>
-        {entry.border && (
-          <>
-            <dt>{t('panel.border')}</dt>
-            <dd>{entry.border}</dd>
-          </>
-        )}
-      </dl>
-      {entry.notes.map((note, i) => (
-        <p key={i} class="panel-note">
-          {note}
-        </p>
-      ))}
+      <p class="panel-period">{t('panel.period', { start: entry.began, end: entry.ended })}</p>
       <Sources lines={entry.sources} />
+      {more && (
+        <details class="panel-more">
+          <summary>{t('panel.moreAboutRecord')}</summary>
+          <dl class="panel-dates">
+            <dt>{t('panel.began')}</dt>
+            <dd>{entry.began}</dd>
+            <dt>{t('panel.ended')}</dt>
+            <dd>{entry.ended}</dd>
+            {entry.border && (
+              <>
+                <dt>{t('panel.border')}</dt>
+                <dd>{entry.border}</dd>
+              </>
+            )}
+          </dl>
+          {entry.notes.map((note, i) => (
+            <p key={i} class="panel-note">
+              {note}
+            </p>
+          ))}
+        </details>
+      )}
     </li>
   );
 }
@@ -195,7 +206,6 @@ function Current({ entry }: { entry: CurrentEntry }) {
 function Spot({ view, onSelect }: { view: SpotView; onSelect: (polity: string) => void }) {
   return (
     <div class="panel-spot">
-      <h4>{t('spot.title')}</h4>
       {view.groups.map((group) => (
         <div key={group.set} class="panel-spot-group">
           <p class="panel-spot-heading">{group.heading}</p>
@@ -264,6 +274,30 @@ function Territory({ view, alsoHere, spot, reportUrl, onGoToDay, onSelectOther }
             ))}
           </ul>
         )}
+        {/* Contested and "sources differ" come straight after the records: they're what the
+            hatching and dots on the map mean, so they're part of the headline (Phase 6 S6b). */}
+        {view.contested.map((line, i) => (
+          <p key={i} class="panel-contested">
+            <span class="panel-contested-swatch" aria-hidden="true" />
+            {line}
+          </p>
+        ))}
+        {/* Where sources differ is a comparison between datasets, so it folds into one line; a
+            big country can have a dozen. */}
+        {view.differ.length > 0 && (
+          <details class="panel-more">
+            <summary>
+              <span class="panel-differ-swatch" aria-hidden="true" />
+              {t('panel.differCount', { count: view.differ.length })}
+            </summary>
+            {view.differ.map((line, i) => (
+              <p key={i} class="panel-contested">
+                <span class="panel-differ-swatch" aria-hidden="true" />
+                {line}
+              </p>
+            ))}
+          </details>
+        )}
         {view.figures.length > 0 && (
           <div class="panel-figures">
             <h4>{t('panel.figures')}</h4>
@@ -273,50 +307,33 @@ function Territory({ view, alsoHere, spot, reportUrl, onGoToDay, onSelectOther }
                   <p>
                     <span class="panel-figure-label">{figure.label}:</span> {figure.value}
                   </p>
-                  {figure.notes.map((note, i) => (
-                    <p key={i} class="panel-note">
-                      {note}
-                    </p>
-                  ))}
                   <Sources lines={figure.sources} />
+                  {figure.notes.length > 0 && (
+                    <details class="panel-more">
+                      <summary>{t('panel.howMeasured')}</summary>
+                      {figure.notes.map((note, i) => (
+                        <p key={i} class="panel-note">
+                          {note}
+                        </p>
+                      ))}
+                    </details>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
         )}
-        {view.contested.map((line, i) => (
-          <p key={i} class="panel-contested">
-            <span class="panel-contested-swatch" aria-hidden="true" />
-            {line}
-          </p>
-        ))}
-        {view.differ.map((line, i) => (
-          <p key={`d${i}`} class="panel-contested">
-            <span class="panel-differ-swatch" aria-hidden="true" />
-            {line}
-          </p>
-        ))}
         {view.missing && <p class="panel-missing">{view.missing}</p>}
-        {spot && <Spot view={spot} onSelect={onSelectOther} />}
         {view.smallTerritory && <p class="panel-missing">{view.smallTerritory}</p>}
         {view.notChecked && <p class="panel-missing">{view.notChecked}</p>}
-        {view.wikipedia && (
-          <p class="panel-report">
-            <a href={view.wikipedia} target="_blank" rel="noopener">
-              {t('panel.wikipedia')}
-            </a>{' '}
-            <span class="panel-report-note">
-              {view.wikipediaVia ? t('panel.wikipediaVia', { source: view.wikipediaVia }) : t('panel.wikipediaNote')}
-            </span>
-          </p>
-        )}
-        <p class="panel-report">
-          <a href={reportUrl()} target="_blank" rel="noopener" onPointerDown={refreshReportLink} onFocus={refreshReportLink}>
-            {t('panel.report')}
-          </a>{' '}
-          <span class="panel-report-note">{t('panel.reportNote')}</span>
-        </p>
       </section>
+
+      {spot && (
+        <details class="panel-section">
+          <summary>{t('spot.title')}</summary>
+          <Spot view={spot} onSelect={onSelectOther} />
+        </details>
+      )}
 
       {view.history.length > 0 && (
         <details class="panel-section">
@@ -358,6 +375,24 @@ function Territory({ view, alsoHere, spot, reportUrl, onGoToDay, onSelectOther }
           </div>
         ))}
       </details>
+      <div class="panel-section panel-links">
+        {view.wikipedia && (
+          <p class="panel-report">
+            <a href={view.wikipedia} target="_blank" rel="noopener">
+              {t('panel.wikipedia')}
+            </a>{' '}
+            <span class="panel-report-note">
+              {view.wikipediaVia ? t('panel.wikipediaVia', { source: view.wikipediaVia }) : t('panel.wikipediaNote')}
+            </span>
+          </p>
+        )}
+        <p class="panel-report">
+          <a href={reportUrl()} target="_blank" rel="noopener" onPointerDown={refreshReportLink} onFocus={refreshReportLink}>
+            {t('panel.report')}
+          </a>{' '}
+          <span class="panel-report-note">{t('panel.reportNote')}</span>
+        </p>
+      </div>
       <Credits credits={view.credits} />
     </>
   );

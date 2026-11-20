@@ -575,7 +575,15 @@ The vision is large on purpose. These are the levers, in the order to reach for 
   date" is a clock, so it doesn't look like the key), fitting a 360 px screen with 44 px touch
   targets. The wordmark is a dashed old border in the playhead's red beside a solid new one.
   The mockup's menu button was left out: there's nothing to put in it until step 9's About and
-  Contribute pages. **S6b, the calmer panel,** comes next.
+  Contribute pages. **S6b, the calmer panel** (layout only; `model.ts` unchanged): the name and
+  close button stay in view while the panel scrolls; each record in effect is what it says, its
+  dates on one line, and its sources, with the border-line precision and notes under "More
+  about this record"; contested areas come straight after the records, and "sources differ"
+  folds into one line with a count; a land area shows its value and sources, with the method
+  under "How this was measured"; "What each source says at the spot you clicked" is a folded
+  section; the Wikipedia and report links come after the facts. Credits stay visible, since
+  Cliopatria's license asks for credit wherever its data is shown. The mockup's one-sentence
+  summary is left for later: it needs new wording in `model.ts`, which this step doesn't touch.
 
 Settled before approval (2026-09-29):
 

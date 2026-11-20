@@ -134,6 +134,12 @@ export const en = {
   'panel.names': 'Names ({count})',
   'panel.nameLocal': 'local name',
   'panel.period': '{start} – {end}',
+  // Opens a record's border-line precision and notes.
+  'panel.moreAboutRecord': 'More about this record',
+  // Opens the list of places where the second opinion (Cliopatria) differs from the map.
+  'panel.differCount': 'Where sources differ ({count})',
+  // Opens how a figure (such as a land area) was worked out.
+  'panel.howMeasured': 'How this was measured',
   'panel.began': 'Began',
   'panel.ended': 'Ended',
   'panel.border': 'Border line',

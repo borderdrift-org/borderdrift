@@ -372,6 +372,10 @@ affect everyday work:
   and the timeline (row 4), and the wordmark is `position: fixed` over the map. Keep that row on
   one line at 360 px: measure it after adding a control. The header's `z-index` (3) must stay
   above MapLibre's controls (2).
+- **The calmer panel** (S6b): `.panel-header` is sticky. In a record or figure, what it says,
+  its dates and its sources are always shown; longer text goes in a `details.panel-more` ("More
+  about this record", "How this was measured", "Where sources differ (n)"), styled as a quiet
+  link. Never fold away a record's sources or the credits.
 
 **CShapes decisions (2026-09-27)**, made while importing it:
 
