@@ -328,7 +328,7 @@ with an effort setting for each step. The ones that affect everyday work:
 
 **Phase 6 (2026-11-20): only part of the plan is approved.** The plan is in
 [docs/phase-6-plan.md](docs/phase-6-plan.md#16-decisions); its questions 1–12 are still a draft.
-Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and steps S1 to S3. The ones that
+Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and steps S1 to S4. The ones that
 affect everyday work:
 
 - **The opening view** (S1) is in `src/opening.ts`: the day of `OPENING_EVENT`
@@ -352,9 +352,18 @@ affect everyday work:
   preview). `public/preview.png` is 1200×630: the site at `#d=1934-06-01&m=4/42.5/121`, with the
   "Early preview" note dismissed and every layer whose ID starts with `contested`, `baseline`,
   `differ`, `dejure`, `second` or `data-edge` hidden (`map.setLayoutProperty(id, 'visibility',
-  'none')` in the dev console), so it shows only OpenHistoricalMap (CC0) and Natural Earth (public
-  domain) and stays CC0 (listed in `CREDITS.md`). Never make it from a view that shows CShapes
-  (NC-SA) or Cliopatria (CC BY, needs credit) without crediting them in the image.
+  'none')`), so it shows only OpenHistoricalMap (CC0) and Natural Earth (public domain) and stays
+  CC0 (listed in `CREDITS.md`). Never make it from a view that shows CShapes (NC-SA) or Cliopatria
+  (CC BY, needs credit) without crediting them in the image. `npm run record-demo -- --preview`
+  remakes it.
+- **The README's GIF** (S4): `docs/demo.gif`, made by `scripts/record-demo.ts` from `npm run dev`
+  (the dev build exposes `window.map`, `timeline` and `historical`). It steps the timeline with
+  `timeline.setDay` and waits for the map's `idle` before each screenshot, so it's the same every
+  time and never catches a half-loaded era; it hides the same layers as the preview. Its view
+  stays inside OpenHistoricalMap's East Asia area, because outside it the hidden baseline would
+  leave "no data" hatching. Playwright (pinned, with its browser installed by
+  `npx playwright install chromium`), gifenc and pngjs are dev dependencies for it only; gifenc
+  has no types, so `scripts/lib/gifenc.d.ts` declares what's used.
 
 **CShapes decisions (2026-09-27)**, made while importing it:
 
@@ -380,6 +389,7 @@ LTS, and the GitHub CLI are installed.
 `npm run build`, `npm run preview`, `npm run typecheck`, `npm test`, `npm run test:watch`,
 `npm run validate`, `npm run summarize-changes` (compares `data/` with `origin/main`; options at the
 top of the script), `npm run suggest-crosswalk` (options at the top of the script),
+`npm run record-demo` (the README's GIF, or `-- --preview` the share preview, from `npm run dev`),
 `npm run measure-ohm` (OpenHistoricalMap's boundaries by region and period; its server is blocked in
 some environments, so the "Measure OpenHistoricalMap's coverage" workflow runs it on GitHub),
 `npm run build-data`, `npm run import:ohm`, `npm run import:cshapes`, and

@@ -517,6 +517,15 @@ and 100 GB/month bandwidth as a soft limit):
   - ✅ The translator's guide, glossary, and catalog check (step 10).
   - ✅ A phone check and the docs (step 11): the opening view downloads about 0.85 MB
     compressed, crossing into another era about 0.4 MB, with no errors.
+- **Phase 6, a map good to use and good to watch:** detailed plan
+  [phase-6-plan.md](phase-6-plan.md), still a draft except its show-ready slice (approved
+  2026-11-20, question 13). The project was renamed BorderDrift the same day. Done (2026-11-20):
+  - ✅ S1: the opening view lands on Manchuria 1931, where the sourced events are; the key starts
+    folded; the "Early preview" note can be dismissed.
+  - ✅ S2: a bigger Play button and date, and plays that pause at an era's end so the map never
+    goes empty.
+  - ✅ S3: a share preview for links.
+  - ✅ S4: this README's demo GIF, recorded by `npm run record-demo`.
 - **Next:** importing Europe from OpenHistoricalMap (chosen 2026-09-29; it has the most
   boundaries, [data-sources.md](data-sources.md#openhistoricalmap)). Then, for the maintainers to
   choose: contested areas for more regions and for Europe after 1944; the showcase data track

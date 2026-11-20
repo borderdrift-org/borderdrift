@@ -10,7 +10,7 @@
 > site is good enough to show people before the longer performance and detail work
 > (question 13).
 >
-> **Approved 2026-11-20: question 13 (the show-ready slice first), and steps S1 to S3.** The rest of the
+> **Approved 2026-11-20: question 13 (the show-ready slice first), and steps S1 to S4.** The rest of the
 > plan, including questions 1–12, is still a draft for the maintainers to review.
 
 Phases 1–5 built a map that is honest about its sources and covers the world. Phase 6 makes it
@@ -552,6 +552,15 @@ The vision is large on purpose. These are the levers, in the order to reach for 
   Manchuria, showing only OpenHistoricalMap and Natural Earth, so the image is CC0 like our own
   data. (Seen while making it: Manchukuo and China get nearly the same fill though they share a
   border. That's for step 7, the map's look.)
+- **Step S4, the README:** a GIF at the top (`docs/demo.gif`, 760×640, about 2 MB): East Asia on
+  1 January of each year from 1900 to 1950, from OpenHistoricalMap and Natural Earth only, like
+  the preview. `npm run record-demo` records it from the site running locally (and
+  `-- --preview` remakes the preview image), stepping the timeline instead of playing it so it
+  comes out the same each time; it needs Playwright, gifenc and pngjs as dev dependencies. The
+  first idea, Manchuria 1931–34 by month, barely changed on screen because of the Manchukuo and
+  China colors, so the GIF covers 1900–1950 instead. The README now leads with the GIF, one
+  sentence and an "Open the map" link; the long status list became a short status paragraph,
+  and the roadmap has a Phase 6 entry.
 
 Settled before approval (2026-09-29):
 

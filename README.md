@@ -1,57 +1,40 @@
 # BorderDrift
 
-An open-source interactive map of how the world's borders changed through history. Drag the
-timeline or press play, and every state, empire, colony, city-state, and everything in between
-redraws for that date. Every border and event on the map is traced to a named source.
+**Borders through time, with sources.** An open-source map of how the world's borders changed:
+drag the timeline or press play, and every state, empire and colony redraws for that date. Every
+border and event on the map is traced to a named source.
 
-**Live site: https://borderdrift-org.github.io/borderdrift/**
+<p align="center">
+  <a href="https://borderdrift-org.github.io/borderdrift/"><img src="docs/demo.gif" width="760" alt="The BorderDrift map of East Asia, stepping one year at a time from 1900 to 1950: the borders and the names of the states change as the date advances."></a>
+</p>
+<p align="center"><sub>East Asia, 1 January 1900 to 1 January 1950, one frame per year: borders as administered,
+according to OpenHistoricalMap.</sub></p>
 
-> **Status: Phase 5 is closed** (the worldwide map; [plan](docs/phase-5-plan.md); Phases
-> [2](docs/phase-2-plan.md), [3](docs/phase-3-plan.md), and [4](docs/phase-4-plan.md) are done
-> too). Next: importing Europe from OpenHistoricalMap. Borders cover the whole world, from 3400 BCE to today, and
-> change as you move the timeline: from OpenHistoricalMap in East Asia, 1900–1950, and from
-> Cliopatria (approximate and year by year) everywhere else.
->
-> - Click a territory to open a panel with its names over time, every record with its dates and
->   sources, its area, a link to its Wikipedia article, and what isn't in our data yet. The panel
->   has a button to report a problem with that border.
-> - A switch shows the borders as administered or as legally recognized (CShapes 2.0, 1886–2019,
->   non-commercial). A cross-hatch marks contested areas, administered by one state and legally
->   recognized as another's, in East Asia 1900–1950 and Europe 1914–1944, where the maintainers
->   have reviewed which states in the two sources are the same; elsewhere the panel says "Not yet
->   checked against legal borders here".
-> - A "Second opinion" toggle lays Cliopatria's borders over OpenHistoricalMap's as dotted outlines,
->   and shows where the two sources differ.
-> - The map shows how sure the sources are: a border whose start or end is known only to the month
->   or year is drawn lighter for that stretch, and a contested area that depends on such a date is
->   hatched more faintly ("Possibly contested").
-> - "Around this date" lists the border changes and events near the selected date.
-> - Clicking the map shows, in the panel, what each source records at that spot on that date, side
->   by side.
-> - Seven sourced events for Manchuria, 1931–33, are marked on the timeline.
-> - The address bar always links to the exact date, view, and selection, so you can share it.
-> - For contributors: every pull request that changes the data gets a plain-language summary as a
->   comment; a dataset can be re-imported with a button on GitHub; reviewers have a
->   [guide](docs/reviewing.md), and translators a [guide and glossary](docs/translating.md).
->
-> See the [roadmap](docs/architecture.md#roadmap).
+<p align="center"><b><a href="https://borderdrift-org.github.io/borderdrift/">Open the map →</a></b></p>
 
-## What it will do
+## What it does
 
-- **A world map with a timeline** that zooms from thousands of years down to single days, with
-  play/pause and speed controls.
-- **Border changes linked to the events behind them.** An event appears as a marker on the timeline
-  and a brief pulse on the map. The territorial changes it led to follow it, and clicking the event
-  opens a short summary with sources.
-- **Click a territory** to see what it was on that date: its names, who controlled it, who was
-  recognized as its legal owner, who else claimed it, and the sources for each.
-- **A side panel** summarizing what was happening around the world near the selected date.
-- **Contested borders shown as contested**, using distinct line styles and patterns (never color
-  alone), plus a way to compare what different sources say.
-- **Honest uncertainty.** The map shows how precise each border and date is. "No state here" looks
-  different from "no data yet".
-- **Shareable links** to an exact date and map view.
-- **Works on phones.**
+- **A world map with a timeline** that zooms from thousands of years down to single days. Press
+  play to watch the borders change.
+- **Click a territory** to see what it was on that date: its names (in their own scripts too),
+  who controlled it, who was legally recognized as its owner, its area, and the sources for each,
+  with a button to report a problem.
+- **Control and legal recognition are kept apart.** A switch shows borders as administered or as
+  legally recognized, and a cross-hatch marks contested areas: administered by one state but
+  legally recognized as another's. It never relies on color alone.
+- **Events behind the changes,** marked on the timeline, each with a short summary and its
+  sources. "Around this date" lists the events and border changes near the date you're on.
+- **Honest about uncertainty.** A border whose dates are known only to the month or year is drawn
+  lighter, and a second opinion from another dataset shows where sources differ.
+- **Shareable links** to an exact date, place and selection, and it **works on phones.**
+
+**Status: an early preview.** Detailed borders come from
+[OpenHistoricalMap](https://www.openhistoricalmap.org/) for East Asia, 1900–1950; everywhere else,
+from 3400 BCE to 2024, they're approximate and year by year, from
+[Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria). Legal borders come from
+CShapes 2.0 (1886–2019). The current work is making the site ready to show people
+([Phase 6 plan](docs/phase-6-plan.md)); everything done so far is in the
+[roadmap](docs/architecture.md#roadmap).
 
 ## Principles
 
@@ -94,6 +77,7 @@ file. Stop the server with <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 | `npm run summarize-changes` | Describes, in words, what your copy of `data/` changes compared with `main` (records, borders, events, licenses, and what that does to contested areas and land areas). Pull requests get the same summary as a comment |
 | `npm run suggest-crosswalk -- --region=W,S,E,N --years=FROM,TO --out=report.md --trial` | Suggests which CShapes units are the same state as Cliopatria's polities in a region and period, for the maintainers to review before contested areas are shown there (see `docs/crosswalk-review/`). Changes nothing in `data/` |
 | `npm run measure-ohm` | Counts OpenHistoricalMap's country-level boundaries by region and period, to choose the next region to import. The "Measure OpenHistoricalMap's coverage" button in the Actions tab runs it on GitHub. Changes nothing in `data/` |
+| `npm run record-demo` | Records the GIF at the top of this page (`docs/demo.gif`) from the site running locally (start `npm run dev` first). `-- --preview` makes the share preview image (`public/preview.png`) instead. The first time, run `npx playwright install chromium` |
 | `npm run build-data` | Compiles `data/` into the files the site loads (`public/data/`); runs automatically before `dev` and `build` |
 | `npm run import:ohm` | Re-imports the OpenHistoricalMap borders (see [data/imports/openhistoricalmap](data/imports/openhistoricalmap/README.md)) |
 | `npm run import:cshapes` | Re-imports CShapes 2.0 from its pinned files (non-commercial; see [data/imports/cshapes-2-0](data/imports/cshapes-2-0/README.md)) |
@@ -144,6 +128,8 @@ taking part follows our
   (approved 2026-09-28), with progress.
 - [docs/phase-5-plan.md](docs/phase-5-plan.md): the plan for Phase 5, the worldwide map
   (approved 2026-09-28), with measurements and progress.
+- [docs/phase-6-plan.md](docs/phase-6-plan.md): the plan for Phase 6, a map good to use and good
+  to watch (a draft; its first steps approved 2026-11-20).
 - [docs/reviewing.md](docs/reviewing.md): how to review a pull request, merge it without a time
   zone stamp, and set up the repository's settings.
 - [docs/tracing-guide.md](docs/tracing-guide.md): how to trace a border in OpenHistoricalMap

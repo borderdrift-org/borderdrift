@@ -29,6 +29,7 @@ See [docs/data-sources.md](docs/data-sources.md) for the full evaluation.
 
 | Document | Source | License |
 |---|---|---|
+| [docs/demo.gif](docs/demo.gif) (the README's demo) | Screenshots of this site, East Asia 1900–1950, showing only OpenHistoricalMap's borders (CC0 1.0) over Natural Earth (public domain), recorded by `npm run record-demo` | CC0 1.0, like our own data |
 | [public/preview.png](public/preview.png) (the share preview) | A screenshot of this site showing only OpenHistoricalMap's borders (CC0 1.0) over Natural Earth (public domain); the layers built from CShapes and Cliopatria were hidden for it | CC0 1.0, like our own data |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | [Contributor Covenant 3.0](https://www.contributor-covenant.org/version/3/0/) | CC BY-SA 4.0 |
 | [LICENSE](LICENSE) | MIT License text, from GitHub's license templates | Standard license text |
