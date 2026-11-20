@@ -99,7 +99,7 @@ different polities have a border nearby. The parts add up to the world's land, a
   km² has no Cliopatria shape (real gaps), and Antarctica 12 million.
 - **How much option B would fill** (decision 3: a polity's flagged margin where exactly one
   polity has a border within the margin width): 39% of the coastal strips at 5 km, **54% at
-  10 km, 60% at 15 km**, 65% at 25 km. The gain levels off after about 15 km, which matches part 3:
+  10 km, 60% at 15 km**, 65% at 25 km. The gain levels off after about 15 km, which matches section 3:
   95% of Cliopatria's coastal border points that stop short do so by under 14.5 km.
 - **Between two polities**, where B leaves the hatch, is rare: 1–2%.
 - **No polity within reach:** the rest (39% at 15 km) is coast Cliopatria doesn't cover at all,
