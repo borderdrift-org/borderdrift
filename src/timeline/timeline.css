@@ -25,10 +25,28 @@
   margin-bottom: 4px;
 }
 
-.timeline-date {
+/* The date and, under it, a note when playback pauses by itself. */
+.timeline-date-group {
   flex: 1;
   min-width: 0;
-  font-size: 1rem;
+}
+
+.timeline-note {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--timeline-label);
+}
+
+.timeline-note:empty {
+  display: none;
+}
+
+/* The date is big: it's what the map is showing (Phase 6 step S2). */
+.timeline-date {
+  display: block;
+  min-width: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -68,6 +86,40 @@
 
 .timeline-play:hover {
   background: #424a53;
+}
+
+/* Play is the first thing to try (Phase 6 step S2): bigger, with its word beside the icon. */
+.timeline-play {
+  width: auto;
+  height: 44px;
+  gap: 6px;
+  padding: 0 16px 0 12px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.timeline-play svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* A few gentle pulses until the first play; none for visitors who prefer reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .timeline-play-invite {
+    animation: timeline-invite 1.6s ease-in-out 1s 4;
+  }
+}
+
+@keyframes timeline-invite {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(207 34 46 / 0%);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgb(207 34 46 / 35%);
+  }
 }
 
 .timeline-zoom {
@@ -122,9 +174,19 @@
     width: 44px;
   }
 
+  /* Phones: the play button is icon only (its label is still read out). */
+  .timeline-play {
+    width: 44px;
+    padding: 0;
+  }
+
+  .timeline-play-label {
+    display: none;
+  }
+
   /* Long dates ("30 September 221 BCE") wrap onto a second line rather than being cut off. */
   .timeline-date {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     line-height: 1.15;
     white-space: normal;
     display: -webkit-box;

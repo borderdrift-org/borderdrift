@@ -199,6 +199,8 @@ export const en = {
     'Drag the timeline to move through time. Scroll or pinch to zoom. Arrow keys step, Page Up and Page Down take bigger steps, + and − zoom, [ and ] jump to the previous or next event, and Space plays or pauses.',
   'timeline.play': 'Play',
   'timeline.pause': 'Pause',
+  // Shown when a play pauses by itself at the edge of a stretch of the map's data (an era).
+  'timeline.pausedAtEra': 'Paused while the next period loads. Press play to carry on.',
   'timeline.zoomIn': 'Zoom in on the timeline',
   'timeline.zoomOut': 'Zoom out on the timeline',
   'timeline.speed': 'Playback speed',

@@ -10,7 +10,7 @@
 > site is good enough to show people before the longer performance and detail work
 > (question 13).
 >
-> **Approved 2026-11-20: question 13 (the show-ready slice first), and step S1.** The rest of the
+> **Approved 2026-11-20: question 13 (the show-ready slice first), and steps S1 and S2.** The rest of the
 > plan, including questions 1–12, is still a draft for the maintainers to review.
 
 Phases 1–5 built a map that is honest about its sources and covers the world. Phase 6 makes it
@@ -541,6 +541,12 @@ The vision is large on purpose. These are the levers, in the order to reach for 
   a test) over Manchuria, so the timeline's window holds the map's sourced events. The map key
   starts folded on every screen, and the "Early preview" note has a "Got it" button that hides it
   for good in that browser. No event panel opens by itself: the map comes first.
+- **Step S2, play as the first action:** the play button is bigger, with the word "Play" beside
+  its icon on wider screens, and pulses gently four times after the page loads until it's first
+  pressed (not for visitors who prefer reduced motion). The date is bigger. A play pauses by itself
+  on the last day of the era it's in (`eraEnd`, `src/map/eras.ts`), with a note under the date, so
+  the map never goes empty while the next era's tiles load; pressing play again carries on. Step 6
+  (smooth era changes) can lift the pause.
 
 Settled before approval (2026-09-29):
 

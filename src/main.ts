@@ -14,6 +14,7 @@ import { civilToJdn, formatDay } from './dates/index.ts';
 import { getLocale, pickLocale, setLocale, t } from './i18n/index.ts';
 import type { MessageKey } from './i18n/index.ts';
 import { HistoricalLayers } from './map/historical';
+import { eraEnd } from './map/eras.ts';
 import { DEFAULT_VIEW, PHONE_ZOOM } from './opening.ts';
 import type { BorderView } from './map/historical';
 import { TerritoryPanel } from './panel/panel';
@@ -230,6 +231,12 @@ const timeline = new Timeline({
   },
   onEventSelect: (id) => select(eventSelection(id), 'click'),
   onZoom: () => panel.refresh(),
+  // Plays pause at the end of an era (Phase 6 step S2), until the map keeps old tiles while new
+  // ones load (step 6). Before tiles.json has loaded there's no limit.
+  playStopsAt: (day) => {
+    const eras = historical.eras();
+    return eras ? eraEnd(eras, day) : null;
+  },
   // A ring on the map where each event the playhead passes happened.
   onEventsPassed: (events) => events.forEach((e) => e.at && historical.pulse(e.at)),
 });

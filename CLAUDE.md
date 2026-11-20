@@ -328,7 +328,7 @@ with an effort setting for each step. The ones that affect everyday work:
 
 **Phase 6 (2026-11-20): only part of the plan is approved.** The plan is in
 [docs/phase-6-plan.md](docs/phase-6-plan.md#16-decisions); its questions 1–12 are still a draft.
-Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and step S1. The ones that
+Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and steps S1 and S2. The ones that
 affect everyday work:
 
 - **The opening view** (S1) is in `src/opening.ts`: the day of `OPENING_EVENT`
@@ -339,6 +339,14 @@ affect everyday work:
 - **The "Early preview" note** is hidden until `main.ts` reads `localStorage`
   (`borderdrift.previewNoticeDismissed`); "Got it" sets it. Every storage call is in `try`, so a
   browser that blocks storage just shows the note again. Phones still don't show it at all.
+- **Plays pause at an era's end** (S2): the timeline's `playStopsAt` option gets the end of the
+  era holding the day after the playhead (`eraEnd` in `src/map/eras.ts`), so pressing play on an
+  era's last day carries on into the next. It pauses on the day before and shows
+  `timeline.pausedAtEra`. Remove it only once the map keeps old tiles until new ones load (Phase 6
+  step 6).
+- **The play button** has a visible label on wider screens (`.timeline-play-label`, hidden on
+  phones) and the class `timeline-play-invite` until the first play, which pulses only under
+  `prefers-reduced-motion: no-preference`.
 
 **CShapes decisions (2026-09-27)**, made while importing it:
 

@@ -35,6 +35,12 @@ export interface TimelineOptions {
   onEventsPassed?: (events: TimelineEvent[]) => void;
   /** Called when the zoom changes (which changes the visible range). */
   onZoom?: () => void;
+  /**
+   * The first day a play started on `day` must not enter, or null for no limit (Phase 6 step S2).
+   * Playback pauses on the day before, and pressing play again carries on past it. The map passes
+   * the end of the era holding `day`, so a play never shows the map empty while tiles load.
+   */
+  playStopsAt?: (day: number) => number | null;
 }
 
 const DAYS_PER_YEAR = 365.2425;
@@ -83,6 +89,8 @@ export class Timeline {
   private lastReportedDay = Number.NaN;
 
   private playing = false;
+  /** Where the current play pauses (see TimelineOptions.playStopsAt). */
+  private stopAt = Infinity;
   private speed = DEFAULT_SPEED;
   private lastFrameTime = 0;
   private frameRequested = false;
@@ -97,6 +105,8 @@ export class Timeline {
   private readonly context: CanvasRenderingContext2D;
   private readonly dateLabel: HTMLOutputElement;
   private readonly playButton: HTMLButtonElement;
+  /** Says why playback paused by itself; read out by screen readers too. */
+  private readonly note: HTMLElement;
   private colors = { tick: '', label: '', labelMajor: '', playhead: '', outside: '', event: '', font: '' };
   /** Sorted by start day (see events.ts). */
   private events: TimelineEvent[] = [];
@@ -108,7 +118,8 @@ export class Timeline {
     const root = element('div', 'timeline');
 
     const controls = element('div', 'timeline-controls');
-    this.playButton = element('button', 'timeline-button timeline-play');
+    // It pulses gently until the first play, to show where to start (not with reduced motion).
+    this.playButton = element('button', 'timeline-button timeline-play timeline-play-invite');
     this.playButton.type = 'button';
     this.playButton.addEventListener('click', () => this.togglePlay());
 
@@ -138,7 +149,12 @@ export class Timeline {
     const zoom = element('div', 'timeline-zoom');
     zoom.append(zoomOut, zoomIn);
 
-    controls.append(this.playButton, this.dateLabel, speedLabel, zoom);
+    const dateGroup = element('div', 'timeline-date-group');
+    this.note = element('p', 'timeline-note');
+    this.note.setAttribute('role', 'status');
+    dateGroup.append(this.dateLabel, this.note);
+
+    controls.append(this.playButton, dateGroup, speedLabel, zoom);
 
     const help = element('p', 'visually-hidden');
     help.id = 'timeline-help';
@@ -253,6 +269,10 @@ export class Timeline {
 
   private play(): void {
     if (this.day >= this.options.maxJdn) return; // already at the end
+    // From the day after, so a play that paused on an era's last day carries on into the next.
+    this.stopAt = this.options.playStopsAt?.(this.day + 1) ?? Infinity;
+    this.note.textContent = '';
+    this.playButton.classList.remove('timeline-play-invite');
     this.playing = true;
     this.lastFrameTime = 0;
     this.updatePlayButton();
@@ -265,8 +285,12 @@ export class Timeline {
   }
 
   private updatePlayButton(): void {
-    this.playButton.innerHTML = this.playing ? ICONS.pause : ICONS.play;
-    this.playButton.setAttribute('aria-label', t(this.playing ? 'timeline.pause' : 'timeline.play'));
+    const label = t(this.playing ? 'timeline.pause' : 'timeline.play');
+    // The word shows beside the icon on wider screens (timeline.css); the icon is hidden from
+    // screen readers, which read the button's label.
+    this.playButton.innerHTML = `${this.playing ? ICONS.pause : ICONS.play}<span class="timeline-play-label"></span>`;
+    this.playButton.querySelector('.timeline-play-label')!.textContent = label;
+    this.playButton.setAttribute('aria-label', label);
   }
 
   // --- Drawing -------------------------------------------------------------------------------
@@ -285,6 +309,12 @@ export class Timeline {
         const seconds = Math.min(time - this.lastFrameTime, 100) / 1000;
         this.setPosition(this.position + SPEEDS[this.speed].daysPerSecond * seconds);
         if (this.day >= this.options.maxJdn) this.pause();
+        else if (this.position >= this.stopAt) {
+          // Stop on the last day before the limit, and say why.
+          this.setPosition(this.stopAt - 0.5);
+          this.pause();
+          this.note.textContent = t('timeline.pausedAtEra');
+        }
       }
       this.lastFrameTime = time;
       if (this.playing) this.requestDraw();
