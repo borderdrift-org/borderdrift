@@ -241,6 +241,14 @@ sovereign: China (per CShapes)".
 - **Limits:** 100 MB per file in the repo; about 1 GB for the repo and for the published site;
   100 GB/month bandwidth (soft limit).
 
+### Measuring speed (Phase 6)
+
+`npm run measure-map` (`scripts/measure-map.ts`) measures frame times while panning, zooming and
+playing, the cost of an idle map, the time to fill in after an era jump, and each layer group's
+share, from the site running locally. Its browser draws in software, so its numbers are for
+comparing, not real speeds. Results and a checklist for the maintainers' own machines are in
+[measurements/README.md](measurements/README.md).
+
 ### Measured (Phase 1, step 7, 2026-09-27)
 
 Measured in the Claude app's embedded browser at 1280×720, with frames driven at about 60 per
