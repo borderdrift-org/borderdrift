@@ -24,6 +24,7 @@
     "suggest-crosswalk": "node --max-old-space-size=4096 scripts/suggest-crosswalk.ts",
     "measure-ohm": "node scripts/measure-ohm.ts",
     "measure-alignment": "node --max-old-space-size=6144 scripts/measure-alignment.ts",
+    "measure-coast-gaps": "node --max-old-space-size=6144 scripts/measure-coast-gaps.ts",
     "measure-map": "node scripts/measure-map.ts",
     "record-demo": "node scripts/record-demo.ts",
     "build-data": "node scripts/build-data.ts",

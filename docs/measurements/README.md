@@ -83,3 +83,35 @@ trade, which step 5 measures before applying.
 That supports option B (decision 3): a margin limited to about the source's resolution would fill
 nearly all of Cliopatria's coastal strips, while the wide ones, real gaps, keep the hatch. Part 3
 measures the strips by area, and checks how Cliopatria's authors say their shapes were made.
+
+## 4. The coast gaps, by area (2026-11-20)
+
+The raw numbers are in [coast-gaps.md](coast-gaps.md), written by `npm run measure-coast-gaps`
+from the data, for 1 June 1934, where Cliopatria is the map (outside OpenHistoricalMap's East
+Asia area). It takes the land (Natural Earth 1:10m) that no Cliopatria shape covers, row by row
+along lines of latitude about 2 km apart, and sorts it by distance from the coast and by how many
+different polities have a border nearby. The parts add up to the world's land, as they should.
+
+**What they say:**
+
+- **The strips along coasts total about 1.1 million km²,** under 1% of the world's land; they
+  stand out because they line every coast, not because they're large. Further inland, 3.6 million
+  km² has no Cliopatria shape (real gaps), and Antarctica 12 million.
+- **How much option B would fill** (decision 3: a polity's flagged margin where exactly one
+  polity has a border within the margin width): 39% of the coastal strips at 5 km, **54% at
+  10 km, 60% at 15 km**, 65% at 25 km. The gain levels off after about 15 km, which matches part 3:
+  95% of Cliopatria's coastal border points that stop short do so by under 14.5 km.
+- **Between two polities**, where B leaves the hatch, is rare: 1–2%.
+- **No polity within reach:** the rest (39% at 15 km) is coast Cliopatria doesn't cover at all,
+  islands among it, and keeps the hatch, as a real gap should.
+
+**Suggested for step 5: a 15 km margin,** about Cliopatria's own coastal error, flagged and drawn
+as approximate, with the measurement repeated for a few other dates before it's fixed.
+
+**How Cliopatria's shapes were made: still open.** Its README (at the pinned commit) says only
+that its polities are "sampled at varying timesteps and spatial scales", and refers to the
+authors' paper (*Scientific Data*, 2025) and preprint for how they were built. Neither could be
+reached from the session that measured this (their sites were blocked). A maintainer, or a later
+session that can reach nature.com or osf.io, should read the paper's methods for the base map
+the coasts were drawn against and any simplification, and note it here. Option B doesn't depend
+on it: the margin's width comes from the measured shapes, not from a stated resolution.
