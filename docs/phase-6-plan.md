@@ -10,7 +10,7 @@
 > site is good enough to show people before the longer performance and detail work
 > (question 13).
 >
-> **Approved 2026-11-20: question 13 (the show-ready slice first), and steps S1 to S4.** The rest of the
+> **Approved 2026-11-20: question 13 (the show-ready slice first), and steps S1 to S6.** The rest of the
 > plan, including questions 1–12, is still a draft for the maintainers to review.
 
 Phases 1–5 built a map that is honest about its sources and covers the world. Phase 6 makes it
@@ -561,6 +561,21 @@ The vision is large on purpose. These are the levers, in the order to reach for 
   China colors, so the GIF covers 1900–1950 instead. The README now leads with the GIF, one
   sentence and an "Open the map" link; the long status list became a short status paragraph,
   and the roadmap has a Phase 6 entry.
+- **Step S5, the design direction:** three mockups over real screenshots, desktop and phone:
+  A, a slim bar across the top; B, floating controls with no bar; C, every control on the
+  timeline; plus a calmer panel. The maintainers chose **the hybrid: A on wider screens, C's row
+  above the timeline on phones**, with the calmer panel. (The mockup images aren't kept in the
+  repository: they show contested areas, which carry CShapes' NC-SA license.)
+- **Step S6, built in two parts.** **S6a, the bar:** on wider screens a 52 px bar across the top
+  of the map (never over the panel): the wordmark, the view switch in the middle, then "Map key",
+  "Around this date" and "Copy link", with the first-visit note and "link copied" just under it.
+  The key opens as a card and folds on a click elsewhere or Escape. On phones, only the wordmark
+  stays over the map, as a small tag, and the controls are one row between the panel's sheet and
+  the timeline, icons only (the second opinion's icon is two outlines, one dotted; "Around this
+  date" is a clock, so it doesn't look like the key), fitting a 360 px screen with 44 px touch
+  targets. The wordmark is a dashed old border in the playhead's red beside a solid new one.
+  The mockup's menu button was left out: there's nothing to put in it until step 9's About and
+  Contribute pages. **S6b, the calmer panel,** comes next.
 
 Settled before approval (2026-09-29):
 

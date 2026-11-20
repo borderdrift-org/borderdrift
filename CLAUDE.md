@@ -328,7 +328,7 @@ with an effort setting for each step. The ones that affect everyday work:
 
 **Phase 6 (2026-11-20): only part of the plan is approved.** The plan is in
 [docs/phase-6-plan.md](docs/phase-6-plan.md#16-decisions); its questions 1–12 are still a draft.
-Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and steps S1 to S4. The ones that
+Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and steps S1 to S6 (S5 chose the hybrid layout; S6 is built as S6a, the bar, and S6b, the panel). The ones that
 affect everyday work:
 
 - **The opening view** (S1) is in `src/opening.ts`: the day of `OPENING_EVENT`
@@ -364,6 +364,14 @@ affect everyday work:
   leave "no data" hatching. Playwright (pinned, with its browser installed by
   `npx playwright install chromium`), gifenc and pngjs are dev dependencies for it only; gifenc
   has no types, so `scripts/lib/gifenc.d.ts` declares what's used.
+- **The top bar** (S6a): `.app-header` shares the map's grid cell (column 1, row 1), so it spans
+  the map but never the panel; `.app-header-top` is `display: contents`, and `order` places the
+  wordmark, view switch, key and buttons. MapLibre's top-right controls move down 52 px. The
+  key is a `<details>` whose `.map-key-body` is a card; `main.ts` folds it on a click elsewhere or
+  Escape. On phones (`max-width: 600px`) the bar is grid row 3, between the panel's sheet (row 2)
+  and the timeline (row 4), and the wordmark is `position: fixed` over the map. Keep that row on
+  one line at 360 px: measure it after adding a control. The header's `z-index` (3) must stay
+  above MapLibre's controls (2).
 
 **CShapes decisions (2026-09-27)**, made while importing it:
 

@@ -165,7 +165,19 @@ function select(next: Selection | null, how: 'click' | 'close' | 'link'): void {
 const nearbyButton = document.getElementById('nearby-button')!;
 
 // The map key starts folded on every screen (Phase 6 step S1), so the map comes first; a click on
-// "Map key" opens it. That's set in index.html, with no `open` on the <details>.
+// "Map key" opens it. That's set in index.html, with no `open` on the <details>. Since Phase 6
+// step S6a it opens as a card over the map, so it folds again on a click anywhere else or on
+// Escape (which returns focus to its button), as such cards usually do.
+const mapKey = document.querySelector<HTMLDetailsElement>('.map-key')!;
+document.addEventListener('click', (event) => {
+  if (mapKey.open && !mapKey.contains(event.target as Node)) mapKey.open = false;
+});
+mapKey.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape' || !mapKey.open) return;
+  mapKey.open = false;
+  mapKey.querySelector('summary')!.focus();
+  event.stopPropagation(); // the panel also closes on Escape; this one only folds the key
+});
 
 // The "Early preview" note shows until the visitor dismisses it, then stays away. It's remembered
 // in this browser only; if the browser blocks storage, the note simply shows again next visit.

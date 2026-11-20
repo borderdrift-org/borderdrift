@@ -37,7 +37,15 @@
          data-i18n-label sets a translated accessible label and tooltip. -->
     <header class="app-header">
       <div class="app-header-top">
-        <h1>BorderDrift</h1>
+        <!-- The wordmark: a dashed old border and a solid new one, drifted apart (Phase 6 step S6a).
+             The heading's text is still "BorderDrift" for screen readers and search. -->
+        <h1 class="wordmark">
+          <svg viewBox="0 0 26 26" aria-hidden="true">
+            <path class="wordmark-old" d="M4 9 L11 4 L20 7 L22 15 L15 22 L6 19 Z" />
+            <path class="wordmark-new" d="M6 11 L13 6 L22 9 L23 17 L16 23 L7 21 Z" />
+          </svg>
+          <span>Border<span class="wordmark-drift">Drift</span></span>
+        </h1>
         <div class="app-header-actions">
           <button
             type="button"
@@ -47,8 +55,9 @@
             aria-controls="panel"
             aria-expanded="false"
           >
+            <!-- A clock, so it doesn't look like the key's icon on phones, where only icons show. -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 6h2v2H4zm4 0h12v2H8zm-4 5h2v2H4zm4 0h12v2H8zm-4 5h2v2H4zm4 0h12v2H8z" />
+              <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm-1 3h2v5.4l3.6 2.1-1 1.7L11 13.6z" />
             </svg>
             <span class="optional-label" data-i18n="nearby.button"></span>
           </button>
@@ -56,7 +65,7 @@
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a3 3 0 1 1 4.2 4.2l-2 2-1.4-1.4 2-2a1 1 0 1 0-1.4-1.4L12 13.4a1 1 0 0 1-1.4 0zm2.8-2.8a1 1 0 0 1 0 1.4l-3.5 3.5a3 3 0 1 1-4.2-4.2l2-2 1.4 1.4-2 2a1 1 0 1 0 1.4 1.4L12 10.6a1 1 0 0 1 1.4 0z" />
             </svg>
-            <span data-i18n="share.button"></span>
+            <span class="optional-label" data-i18n="share.button"></span>
           </button>
         </div>
       </div>
@@ -76,13 +85,26 @@
             <span class="label-long" data-i18n="view.jure"></span><span class="label-short" data-i18n="view.jureShort"></span>
           </button>
         </div>
-        <button type="button" id="second-opinion" class="second-opinion" aria-pressed="false">
+        <!-- On phones only its icon shows (two outlines, one dotted, like the map's second opinion);
+             data-i18n-label keeps its name for screen readers. -->
+        <button type="button" id="second-opinion" class="second-opinion" aria-pressed="false" data-i18n-label="view.second">
+          <svg class="second-opinion-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="7" width="12" height="12" rx="2" />
+            <rect class="dotted" x="9" y="4" width="12" height="12" rx="2" />
+          </svg>
           <span class="label-long" data-i18n="view.second"></span><span class="label-short" data-i18n="view.secondShort"></span>
         </button>
       </div>
       <!-- The map key: starts folded on every screen, so the map comes first (Phase 6 step S1). -->
       <details class="map-key">
-      <summary data-i18n="legend.title"></summary>
+      <summary>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 5h4v4H4zm6 1h10v2H10zM4 11h4v4H4zm6 1h10v2H10zM4 17h4v4H4zm6 1h10v2H10z" />
+        </svg>
+        <span class="map-key-label" data-i18n="legend.title"></span>
+      </summary>
+      <!-- Opens as a small card under (or, on phones, above) the Key button. -->
+      <div class="map-key-body">
       <p class="legend">
         <span class="legend-item"><span class="legend-no-data" aria-hidden="true"></span><span data-i18n="legend.noData"></span></span>
         <span class="legend-item"><span class="legend-contested" aria-hidden="true"></span><span data-i18n="legend.contested"></span></span>
@@ -98,6 +120,7 @@
         <span class="legend-item"><span class="legend-second-line" aria-hidden="true"></span><span data-i18n="legend.second"></span></span>
         <span class="legend-item legend-differ-item"><span class="legend-differ" aria-hidden="true"></span><span data-i18n="legend.differ"></span></span>
       </p>
+      </div>
       </details>
       <p id="share-status" class="share-status" role="status" aria-live="polite"></p>
     </header>
