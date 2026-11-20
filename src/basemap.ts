@@ -28,7 +28,7 @@ export function baseMapStyle(): StyleSpecification {
 
   return {
     version: 8,
-    name: 'chronoatlas base map',
+    name: 'BorderDrift base map',
     sources: {
       land: { type: 'geojson', data: absolute(landUrl), attribution },
       lakes: { type: 'geojson', data: absolute(lakesUrl) },

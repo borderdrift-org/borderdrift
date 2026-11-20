@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/assertion.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/assertion.schema.json",
   "title": "Assertions",
   "description": "A list of sourced statements: 'According to <source>, <subject> <relation> <shape or object> from <start> to <end>.'",
   "type": "array",

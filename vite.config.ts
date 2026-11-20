@@ -28,7 +28,7 @@ function missingDataIsNotFound(): Plugin {
 
 export default defineConfig({
   // Relative paths, so the built site works at any address, including the GitHub Pages
-  // project URL (https://chronoatlas-org.github.io/chronoatlas/).
+  // project URL (https://borderdrift-org.github.io/borderdrift/).
   base: './',
   plugins: [missingDataIsNotFound()],
   server: {

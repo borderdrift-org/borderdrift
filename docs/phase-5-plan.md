@@ -43,7 +43,7 @@ Sections:
   [phase-4-plan.md](phase-4-plan.md#10-decisions-2026-09-28)): the data-change summary on every
   pull request, the re-import button, the refined forms, the reviewer guide, and `CODEOWNERS`.
 - **Tested for real:** the button opened a genuine re-import,
-  [pull request 24](https://github.com/chronoatlas-org/chronoatlas/pull/24), whose summary found
+  [pull request 24](https://github.com/borderdrift-org/borderdrift/pull/24), whose summary found
   two OpenHistoricalMap boundaries for the State of Burma that overlap from 1 to 18 August 1943.
   Reviewing it is a data decision for the maintainers, on the data track.
 - **Left for the maintainers:** the rulesets for `main` and the labels
@@ -309,9 +309,9 @@ Every step keeps `npm run typecheck`, `npm test`, `npm run validate`, and the bu
 - **Step 3 (2026-09-28): done; the data waits for steps 4–5.** The imports' settings cover the
   world (Cliopatria 3400 BCE–2024, CShapes 1886–2019), and the button re-runs any pinned import
   ("Re-import a dataset", decision 13). It opened two pull requests, which pass the data checks:
-  - **Cliopatria,** [pull request 33](https://github.com/chronoatlas-org/chronoatlas/pull/33):
+  - **Cliopatria,** [pull request 33](https://github.com/borderdrift-org/borderdrift/pull/33):
     11,757 records and 1,493 polities added, 190 shapes changed (no longer cut to East Asia).
-  - **CShapes,** [pull request 36](https://github.com/chronoatlas-org/chronoatlas/pull/36): 638
+  - **CShapes,** [pull request 36](https://github.com/borderdrift-org/borderdrift/pull/36): 638
     records and 167 polities added, 38 shapes changed; no change to contested areas.
   - **They're merged only with steps 4–5,** because until then the site would publish one tile set
     for every year (the 4.6–8.7 MB views measured in step 2), and would draw the "edge of imported

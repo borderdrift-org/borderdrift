@@ -303,5 +303,5 @@ usable as sources.
   mostly from Wikipedia.
 
 None of these that we checked separates control, recognition, and claims; links border changes to
-events; or compares sources side by side. That is chronoatlas's niche: **a view across several
+events; or compares sources side by side. That is BorderDrift's niche: **a view across several
 sources, not another border dataset.**

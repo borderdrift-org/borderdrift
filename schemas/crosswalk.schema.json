@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/crosswalk.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/crosswalk.schema.json",
   "title": "Polity crosswalk",
   "description": "Hand-written, in an import folder (data/imports/<name>/polity-crosswalk.yaml): which of our polities goes with each of the import's own units, and when. A list of units.",
   "type": "array",

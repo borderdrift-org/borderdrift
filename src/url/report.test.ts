@@ -8,14 +8,14 @@ describe('borderReportUrl', () => {
     name: 'Testland',
     polity: 'testland',
     day: civilToJdn(1901, 5, 12),
-    viewLink: 'https://chronoatlas-org.github.io/chronoatlas/#d=1901-05-12&m=4.5/10/20&sel=testland',
+    viewLink: 'https://borderdrift-org.github.io/borderdrift/#d=1901-05-12&m=4.5/10/20&sel=testland',
   });
 
   it('opens the border correction form with the territory, date, and view filled in', () => {
     expect(url).toBe(
-      'https://github.com/chronoatlas-org/chronoatlas/issues/new?template=border-correction.yml' +
+      'https://github.com/borderdrift-org/borderdrift/issues/new?template=border-correction.yml' +
         '&territory=Testland%20(testland)&date_range=1901-05-12' +
-        '&view_link=https%3A%2F%2Fchronoatlas-org.github.io%2Fchronoatlas%2F%23d%3D1901-05-12%26m%3D4.5%2F10%2F20%26sel%3Dtestland',
+        '&view_link=https%3A%2F%2Fborderdrift-org.github.io%2Fborderdrift%2F%23d%3D1901-05-12%26m%3D4.5%2F10%2F20%26sel%3Dtestland',
     );
   });
 

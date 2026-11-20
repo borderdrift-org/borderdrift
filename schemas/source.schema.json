@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/source.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/source.schema.json",
   "title": "Source",
   "description": "Who says it: a dataset, book, article, map, document, archive, or website. One file per source in data/sources/<id>.yaml.",
   "type": "object",

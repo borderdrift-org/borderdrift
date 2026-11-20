@@ -146,7 +146,7 @@ Maintainers stay pseudonymous. In comments, reviews, commits, and files:
 - never mention a maintainer's or contributor's real name, location, school, employer, family,
   or personal accounts;
 - write as "the maintainers";
-- work on this project signed in as the project account, `chronoatlas-project`.
+- work on this project signed in as the project account, `borderdrift`.
 
 ## 6. Merging, and how it's recorded
 
@@ -185,7 +185,7 @@ fast-forward again.
 ## 7. Repository settings (done once)
 
 These are GitHub settings, so they're the maintainers' decisions and the maintainers' clicks
-(Phase 4 decisions 4–6). Sign in as `chronoatlas-project` and open the repository's **Settings**.
+(Phase 4 decisions 4–6). Sign in as `borderdrift` and open the repository's **Settings**.
 
 **Protect `main`** (**Rules → Rulesets → New ruleset → New branch ruleset**). Make two rulesets,
 because the second lets the project account bypass it and the first doesn't:
@@ -203,8 +203,8 @@ because the second lets the project account bypass it and the first doesn't:
 it's off, the repository's checkbox is greyed out (the pointer shows a "not allowed" sign).
 
 1. **The organization:** open
-   [the organization's Actions settings](https://github.com/organizations/chronoatlas-org/settings/actions)
-   (profile picture → **Your organizations** → `chronoatlas-org` → **Settings** → **Actions** →
+   [the organization's Actions settings](https://github.com/organizations/borderdrift-org/settings/actions)
+   (profile picture → **Your organizations** → `borderdrift-org` → **Settings** → **Actions** →
    **General**). At the bottom, under **Workflow permissions**, keep **Read repository contents and
    packages permissions**, tick **Allow GitHub Actions to create and approve pull requests**, and
    press **Save**.

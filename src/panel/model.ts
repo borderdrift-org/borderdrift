@@ -114,7 +114,7 @@ export interface FigureEntry {
   partOf?: string;
   /** Coastal waters inside the border that the land area leaves out, in km². */
   waterKm2?: number;
-  /** The source that computed it from its own shape (Cliopatria's `Area`), when not chronoatlas. */
+  /** The source that computed it from its own shape (Cliopatria's `Area`), when not BorderDrift. */
   computedBy?: string;
   sources: Citation[];
   notes?: string;

@@ -13,7 +13,7 @@ import { coverageMarkdown, coverageTable, REGIONS } from './lib/coverage.ts';
 import type { BoundaryRelation } from './lib/coverage.ts';
 
 const ENDPOINT = 'https://overpass-api.openhistoricalmap.org/api/interpreter';
-const USER_AGENT = 'chronoatlas-measure/0.1 (https://github.com/chronoatlas-org/chronoatlas)';
+const USER_AGENT = 'borderdrift-measure/0.1 (https://github.com/borderdrift-org/borderdrift)';
 const QUERY = `[out:json][timeout:900];
 relation["boundary"="administrative"]["admin_level"="2"];
 out tags bb;`;

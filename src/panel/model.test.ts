@@ -474,7 +474,7 @@ describe('describeTerritory: figures', () => {
     expect(area.label).toBe('Area');
     expect(area.value).toBe('about 320,000 km²');
     const notes = area.notes.join(' ');
-    expect(notes).toMatch(new RegExp(`As ${sources['test-source'].title} gives it for this record, from its own shape; not measured by chronoatlas`));
+    expect(notes).toMatch(new RegExp(`As ${sources['test-source'].title} gives it for this record, from its own shape; not measured by BorderDrift`));
     expect(notes).not.toMatch(/present-day coastline/);
   });
 

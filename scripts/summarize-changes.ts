@@ -44,7 +44,7 @@ import {
 import type { FileHashes, SideEffects, TimedValue } from './lib/summary.ts';
 import { validateDataset } from './lib/validate-data.ts';
 
-const SITE_URL = 'https://chronoatlas-org.github.io/chronoatlas/';
+const SITE_URL = 'https://borderdrift-org.github.io/borderdrift/';
 /**
  * The most lines per section in the comment, tried in turn until it fits in a GitHub comment
  * (65,536 characters); the full summary has them all.
@@ -80,7 +80,7 @@ function hashFiles(dataDir: string): FileHashes {
 
 /** A commit's data/, taken from Git into a temporary folder (only read, never run). */
 export function extractData(ref: string): string {
-  const dir = mkdtempSync(join(tmpdir(), 'chronoatlas-base-'));
+  const dir = mkdtempSync(join(tmpdir(), 'borderdrift-base-'));
   const archive = join(dir, 'base.tar');
   execFileSync('git', ['archive', '--format=tar', '-o', archive, ref, 'data'], { cwd: ROOT });
   execFileSync('tar', ['-xf', archive, '-C', dir]);

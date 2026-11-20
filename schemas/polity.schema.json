@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/polity.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/polity.schema.json",
   "title": "Polity",
   "description": "Anything that can hold, claim, or govern territory. One file per polity in data/polities/<id>.yaml.",
   "type": "object",

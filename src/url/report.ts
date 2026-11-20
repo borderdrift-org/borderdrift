@@ -10,7 +10,7 @@
 import { formatDayForUrl } from './state.ts';
 
 export const REPORT_FORM = {
-  address: 'https://github.com/chronoatlas-org/chronoatlas/issues/new',
+  address: 'https://github.com/borderdrift-org/borderdrift/issues/new',
   template: 'border-correction.yml',
   fields: ['territory', 'date_range', 'view_link'],
 } as const;

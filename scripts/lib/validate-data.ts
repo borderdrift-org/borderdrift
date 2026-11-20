@@ -34,7 +34,7 @@ function loadSchemas(): Record<SchemaName, ValidateFunction> {
   for (const file of readdirSync(dir).filter((f) => f.endsWith('.schema.json'))) {
     ajv.addSchema(JSON.parse(readFileSync(join(dir, file), 'utf8')));
   }
-  const base = 'https://chronoatlas-org.github.io/chronoatlas/schemas/';
+  const base = 'https://borderdrift-org.github.io/borderdrift/schemas/';
   const get = (name: SchemaName) => {
     const validate = ajv.getSchema(`${base}${name}.schema.json`);
     if (!validate) throw new Error(`schema ${name} not found`);

@@ -13,7 +13,7 @@ body:
         **license** (whether we may use it, and on what terms) and what it actually records.
         Datasets that forbid commercial use or require share-alike are kept apart from our own
         data, and some can't be used at all. See
-        [how we evaluated the datasets we use](https://github.com/chronoatlas-org/chronoatlas/blob/main/docs/data-sources.md).
+        [how we evaluated the datasets we use](https://github.com/borderdrift-org/borderdrift/blob/main/docs/data-sources.md).
         The more you can tell us below, the faster that check goes.
   - type: input
     id: source_title
