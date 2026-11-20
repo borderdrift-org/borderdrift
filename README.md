@@ -1,10 +1,10 @@
-# chronoatlas
+# BorderDrift
 
 An open-source interactive map of how the world's borders changed through history. Drag the
 timeline or press play, and every state, empire, colony, city-state, and everything in between
 redraws for that date. Every border and event on the map is traced to a named source.
 
-**Live site: https://chronoatlas-org.github.io/chronoatlas/**
+**Live site: https://borderdrift-org.github.io/borderdrift/**
 
 > **Status: Phase 5 is closed** (the worldwide map; [plan](docs/phase-5-plan.md); Phases
 > [2](docs/phase-2-plan.md), [3](docs/phase-3-plan.md), and [4](docs/phase-4-plan.md) are done
@@ -72,8 +72,8 @@ The full rules are in [CONTRIBUTING.md](CONTRIBUTING.md#ground-rules).
 You need [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/) (the LTS version).
 
 ```bash
-git clone https://github.com/chronoatlas-org/chronoatlas.git
-cd chronoatlas
+git clone https://github.com/borderdrift-org/borderdrift.git
+cd borderdrift
 npm install
 npm run dev
 ```

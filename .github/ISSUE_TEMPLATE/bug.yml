@@ -35,7 +35,7 @@ body:
     attributes:
       label: Link to the map view (optional)
       description: Copy the address from the site, or use its "Copy link" button.
-      placeholder: https://chronoatlas-org.github.io/chronoatlas/#d=...
+      placeholder: https://borderdrift-org.github.io/borderdrift/#d=...
   - type: input
     id: device_browser
     attributes:

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/crosswalk-reviewed.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/crosswalk-reviewed.schema.json",
   "title": "Where a crosswalk has been reviewed",
   "description": "Hand-written, in an import folder beside its polity-crosswalk.yaml (data/imports/<name>/crosswalk-reviewed.yaml): the places and years for which the maintainers have reviewed which of the import's units are the same state as ours. Contested areas are computed only inside them (Phase 5 decision 6). A list of scopes, which shouldn't overlap.",
   "type": "array",

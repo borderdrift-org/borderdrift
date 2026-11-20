@@ -3,12 +3,12 @@
 # Syntax: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Licenses: the project's own and every dataset's.
-LICENSE @chronoatlas-project
-LICENSE.md @chronoatlas-project
-/CREDITS.md @chronoatlas-project
+LICENSE @borderdrift
+LICENSE.md @borderdrift
+/CREDITS.md @borderdrift
 
 # Third-party data, its manifests, and the hand-written crosswalks.
-/data/imports/ @chronoatlas-project
+/data/imports/ @borderdrift
 
 # Workflows, issue forms, and this file: what runs with the repository's permissions.
-/.github/ @chronoatlas-project
+/.github/ @borderdrift

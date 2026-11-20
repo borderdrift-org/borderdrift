@@ -11,7 +11,7 @@ body:
       value: |
         Events appear on the timeline and can be linked to the border changes that followed them.
         Every event needs **sources with locators**; see
-        [what counts as a source](https://github.com/chronoatlas-org/chronoatlas/blob/main/CONTRIBUTING.md#what-counts-as-a-source).
+        [what counts as a source](https://github.com/borderdrift-org/borderdrift/blob/main/CONTRIBUTING.md#what-counts-as-a-source).
 
         The event's summary will be **written in the project's own words from the sources you
         cite**. Please **don't paste text from Wikipedia** (it is CC BY-SA and can't go into our
@@ -31,7 +31,7 @@ body:
       description: >-
         As an EDTF date: a day (`1901-05-12`), month (`1901-05`), year (`1901`), approximate
         (`1901~`), or a range (`1901-05/1901-09`). Don't make it more precise than your source.
-        See the [data format guide](https://github.com/chronoatlas-org/chronoatlas/blob/main/docs/data-format.md#conventions).
+        See the [data format guide](https://github.com/borderdrift-org/borderdrift/blob/main/docs/data-format.md#conventions).
       placeholder: e.g. 1901-05-12
     validations:
       required: true

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/coverage.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/coverage.schema.json",
   "title": "Coverage",
   "description": "A list of statements that a source is complete for a region and period. Inside a source's coverage, land with no polity is shown as 'no state (per source)'; without coverage it is 'no data'. Only add coverage when the source itself claims completeness.",
   "type": "array",

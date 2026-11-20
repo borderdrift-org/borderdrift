@@ -84,7 +84,7 @@ The address will also record the selected territory, so a shared link opens the 
 A button in the panel opens GitHub's border correction form with the fields already filled in:
 
 ```
-https://github.com/chronoatlas-org/chronoatlas/issues/new?template=border-correction.yml&territory=Testland%20(testland)&date_range=1901-05-12&view_link=https%3A%2F%2Fchronoatlas-org.github.io%2Fchronoatlas%2F%23d%3D1901-05-12%26sel%3Dtestland
+https://github.com/borderdrift-org/borderdrift/issues/new?template=border-correction.yml&territory=Testland%20(testland)&date_range=1901-05-12&view_link=https%3A%2F%2Fborderdrift-org.github.io%2Fborderdrift%2F%23d%3D1901-05-12%26sel%3Dtestland
 ```
 
 - **Checked against GitHub's documentation (2026-09-27):** a form field's `id` "is the canonical

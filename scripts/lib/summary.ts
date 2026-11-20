@@ -325,9 +325,13 @@ export interface RenderOptions {
   fullSummaryUrl?: string;
 }
 
-const REPO_URL = 'https://github.com/chronoatlas-org/chronoatlas';
+const REPO_URL = 'https://github.com/borderdrift-org/borderdrift';
 
-/** A marker the commenting workflow uses to find its own comment and update it. */
+/**
+ * A marker the commenting workflow uses to find its own comment and update it. It keeps the
+ * project's old name on purpose: changing it would make the workflow post a second summary on
+ * pull requests opened before the rename to BorderDrift (2026-11-20). Visitors never see it.
+ */
 export const SUMMARY_MARKER = '<!-- chronoatlas:data-summary -->';
 
 const KIND_WORDS: Record<ChangeKind, string> = { added: 'Added', removed: 'Removed', changed: 'Changed' };

@@ -428,7 +428,7 @@ describe('the edge of imported data', () => {
 
   it('reads several areas from a manifest', () => {
     // A made-up import folder with two Testland areas.
-    const root = mkdtempSync(join(tmpdir(), 'chronoatlas-areas-'));
+    const root = mkdtempSync(join(tmpdir(), 'borderdrift-areas-'));
     mkdirSync(join(root, 'data/imports/openhistoricalmap'), { recursive: true });
     const areas = [
       { name: 'Testland', bbox: { south: 0, west: 0, north: 1, east: 1 }, fromYear: 1900, toYear: 1950 },

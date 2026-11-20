@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/event.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/event.schema.json",
   "title": "Event",
   "description": "Something that happened at a date and place. One file per event in data/events/<id>.yaml. The summary is written in our own words from the cited sources.",
   "type": "object",

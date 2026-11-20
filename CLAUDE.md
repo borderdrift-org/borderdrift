@@ -5,7 +5,10 @@ through history. It has a world map with a zoomable timeline (from millennia dow
 border changes linked to the events behind them, and transparent, sourced corrections. It is a
 static site hosted on GitHub Pages.
 
-Repo: https://github.com/chronoatlas-org/chronoatlas. The plan was approved on 2026-09-26; see
+The project is called **BorderDrift** (written that way in titles and text; `borderdrift` in
+addresses, package names, and IDs). It was called chronoatlas until 2026-11-20.
+
+Repo: https://github.com/borderdrift-org/borderdrift. The plan was approved on 2026-09-26; see
 [Architecture](#architecture) below.
 
 ## Ground rules (always apply; they override convenience)
@@ -66,9 +69,10 @@ labels as well. The site must work on phones.
 
 This project touches nationalist sensitivities, so maintainers stay pseudonymous.
 
-- The project's only public identities are the GitHub organization `chronoatlas-org` (which
-  owns the repo) and the account `chronoatlas-project` (which owns the organization and makes the
-  commits). Conduct reports go to `chronoatlas.conduct@gmail.com`.
+- The project's only public identities are the GitHub organization `borderdrift-org` (which
+  owns the repo) and the account `borderdrift` (which owns the organization and makes the
+  commits; it was `chronoatlas-project` before 2026-11-20, same account). Conduct reports go to
+  `chronoatlas.conduct@gmail.com` (kept under the old name until a new inbox exists).
 - Never put a maintainer's personal details anywhere public: not in files, commits, issues, pull
   requests, or comments. That includes real names, personal accounts or usernames, location,
   school, employer, or family. Write as "the maintainers".
@@ -78,7 +82,7 @@ This project touches nationalist sensitivities, so maintainers stay pseudonymous
 - Before pushing, check that `git log --format='%an <%ae> %ad'` shows only the project identity
   and `+0000`.
 - The GitHub CLI also holds the maintainer's personal login. Check that `gh auth status` shows
-  `chronoatlas-project` as active before any GitHub operation on this project.
+  `borderdrift` as active before any GitHub operation on this project.
 
 ## Review checklist for data changes (for humans and for Claude)
 
@@ -123,6 +127,11 @@ The full design is in [docs/architecture.md](docs/architecture.md). The dataset 
   because GitHub doesn't redirect Pages URLs after a transfer, so the site's address must not
   change again. Organizations also allow triage-only moderator roles. The organization requires
   two-factor authentication for all members.
+  - **Renamed 2026-11-20:** to `borderdrift-org/borderdrift` (organization and repo) and the
+    account `borderdrift`, because the old name was too close to an existing commercial site.
+    GitHub redirects the old repo links, but **not** the old Pages address, so links to
+    `chronoatlas-org.github.io/chronoatlas` no longer work. The new address must not change
+    again.
 - **Figures (statistics)** are part of the data model. Each is sourced, dated, ranged where
   possible, and carries a `basis`: `polity-territory`, `present-day-borders`, or
   `computed-from-shape`. Never interpolate between estimates. Never attach a figure based on
@@ -556,7 +565,7 @@ some environments, so the "Measure OpenHistoricalMap's coverage" workflow runs i
 - MapLibre waits for the browser's animation frames, which don't run while the page is hidden.
   A map that "never loads" in a background tab may just be paused.
 - **Deployment:** `.github/workflows/deploy.yml` builds pull requests and deploys `main` to
-  GitHub Pages (https://chronoatlas-org.github.io/chronoatlas/). The Pages source is "GitHub
+  GitHub Pages (https://borderdrift-org.github.io/borderdrift/). The Pages source is "GitHub
   Actions", so no Jekyll processing and no `gh-pages` branch. Actions are pinned to full commit
   SHAs with a version comment. To update one, look up the new release's commit, and keep the
   permissions minimal.

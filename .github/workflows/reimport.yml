@@ -123,7 +123,7 @@ jobs:
               echo "**Checks:** ❌ \`npm run validate\` found problems; see the run above. ${fix}"
             fi
             echo
-            echo "The data-change summary is in the first comment. Review this like any data change ([how review works](https://github.com/chronoatlas-org/chronoatlas/blob/main/CONTRIBUTING.md#how-review-works)): ${others}. Nothing is merged automatically."
+            echo "The data-change summary is in the first comment. Review this like any data change ([how review works](https://github.com/borderdrift-org/borderdrift/blob/main/CONTRIBUTING.md#how-review-works)): ${others}. Nothing is merged automatically."
           } > summary/body.md
           if ! url="$(gh pr create --base "$BASE" --head "$branch" --title "Re-import ${title} (${day})" --body-file summary/body.md)"; then
             # Don't leave the branch behind when the pull request can't be opened.
