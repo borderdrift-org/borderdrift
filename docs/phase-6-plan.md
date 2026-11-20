@@ -10,8 +10,9 @@
 > site is good enough to show people before the longer performance and detail work
 > (question 13).
 >
-> **Approved 2026-11-20: question 13 (the show-ready slice first), and steps S1 to S6.** The rest of the
-> plan, including questions 1–12, is still a draft for the maintainers to review.
+> **Approved 2026-11-20, all of it:** question 13 (the show-ready slice first, done as S1–S6) and,
+> later the same day, questions 1–12 with their recommendations, choosing option B for the coast
+> gaps (question 3). The decisions are in [section 16](#16-decisions).
 
 Phases 1–5 built a map that is honest about its sources and covers the world. Phase 6 makes it
 **good to use and good to watch**, for a visitor who has never heard of OpenHistoricalMap:
@@ -533,7 +534,37 @@ The vision is large on purpose. These are the levers, in the order to reach for 
 
 *Recorded here when the maintainers approve the plan.*
 
-**Approved 2026-11-20:**
+**Questions 1–12, approved 2026-11-20 with all their recommendations:**
+
+1. **The order and cut lines** of sections 14 and 15, with the show-ready slice first (question 13).
+2. **Performance target:** scrubbing and zooming at 30 frames a second or better on an older
+   integrated-graphics laptop and a mid-range phone, and an idle map using next to nothing;
+   refined by step 2's numbers.
+3. **Coast gaps: option B,** a flagged, build-only approximate margin where one polity's shape
+   stops short of the coast by less than the source's resolution. It's drawn as approximate,
+   never written into `data/`, and asserts nothing; A (restyle only) is the fallback if step 5
+   shows B can't be done honestly.
+4. **Disputed water names:** both names, attributed, from a short hand-written, cited list. Which
+   waters go on it first, and which sources count, the maintainers choose when step 12 starts.
+5. **Flags** as in section 8: their own folder, a license per file, a source and period for each,
+   self-hosted, "No flag on record" by default, starting with our own polities.
+6. **A lighter map setting:** a header toggle, switched on automatically with reduced motion or a
+   low-power signal.
+7. **Your local area** is the headline of Phase 7, unless steps 2–15 finish early; search over
+   Natural Earth's larger towns and cities, plus clicking the map, is enough to start.
+8. **Data saver:** no background prefetching when the browser reports a data-saver connection.
+9. **First-time visitor features:** the play button (done in S2), search by name and the lens in
+   this phase, no scripted tours; compare, cite, embed, clip export and downloads in Phase 7.
+   Events are chosen with the gap report and the rules of thumb in section 9.
+10. **The interface:** mockups first (done in S5), one build (S6a and S6b, then the rest in step 7),
+    with light, dark and high-contrast themes and a self-hosted, open-license UI font. The name was
+    settled the same day (BorderDrift).
+11. **The launch showcase, China 1937–45,** comes after the interface work; Southeast Asia is
+    measured but not imported in this phase.
+12. **New requests** are placed in the order by the same rule: measure first, then what changes
+    tile size or speed, then what adds on top.
+
+**Question 13 and the show-ready slice, approved 2026-11-20:**
 
 - **Question 13:** the show-ready slice (S1–S6) comes first, after step 1 and before step 2.
 - **Step S1, the opening view:** a visit without a link opens on the Mukden incident's date

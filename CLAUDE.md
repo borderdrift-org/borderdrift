@@ -326,9 +326,12 @@ with an effort setting for each step. The ones that affect everyday work:
   its own `Area`, credited to it.
 - **Translations** are published only after a native speaker's review.
 
-**Phase 6 (2026-11-20): only part of the plan is approved.** The plan is in
-[docs/phase-6-plan.md](docs/phase-6-plan.md#16-decisions); its questions 1–12 are still a draft.
-Approved: question 13 (the show-ready slice, steps S1–S6, comes first) and steps S1 to S6 (S5 chose the hybrid layout; S6 is built as S6a, the bar, and S6b, the panel). The ones that
+**Phase 6 plan approved (2026-11-20)**, with all its recommendations, and option B for the
+coast gaps (question 3). The plan and its decisions are in
+[docs/phase-6-plan.md](docs/phase-6-plan.md#16-decisions); the show-ready slice (S1–S6) came first,
+then step 2 (measure before building). Still the maintainers' to choose when their steps come:
+the disputed water names and their sources (step 12).
+The show-ready slice: S5 chose the hybrid layout, and S6 was built as S6a (the bar) and S6b (the panel). The ones that
 affect everyday work:
 
 - **The opening view** (S1) is in `src/opening.ts`: the day of `OPENING_EVENT`
