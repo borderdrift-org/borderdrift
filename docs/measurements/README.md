@@ -115,3 +115,45 @@ reached from the session that measured this (their sites were blocked). A mainta
 session that can reach nature.com or osf.io, should read the paper's methods for the base map
 the coasts were drawn against and any simplification, and note it here. Option B doesn't depend
 on it: the margin's width comes from the measured shapes, not from a stated resolution.
+
+## 5. Water names and flag sources (2026-11-21)
+
+### Water names: Natural Earth
+
+**Our copy has no names.** The Natural Earth import kept only the shapes of lakes and rivers (its
+manifest's `keptProperties` is just `scalerank`), so names for water (step 12) need Natural
+Earth's own layers, from the same pinned version (v5.1.2, public domain, like the rest of
+Natural Earth). Checked from its repository:
+
+| Layer | Features | With a name | Name languages | Alternate names |
+|---|---|---|---|---|
+| `ne_10m_geography_marine_polys` (oceans, seas, gulfs, bays, straits, …) | 306 | 295 | 26, among them Chinese (simplified and traditional), Japanese, Korean, Arabic, Persian and Russian | 7 (`namealt`) |
+| `ne_10m_lakes` | 1,355 | 745 | 26, the same | 199 (`name_alt`) |
+| `ne_10m_rivers_lake_centerlines` | 1,455 | 1,367 | English only | 61 (`name_alt`) |
+
+**What this means for step 12:**
+
+- **They're present-day names,** not the names in use in a map's year (one lake's alternate is
+  an official name given decades after the period this map covers in detail). The map should
+  say so: "present-day names (Natural Earth)".
+- **The alternates are a lead, not the disputed-names list.** They mix real disputes (in the
+  marine layer: Persian Gulf / Arabian Gulf, Sea of Japan / East Sea; among lakes: Lake Malawi /
+  Lake Nyasa) with plain translations or local spellings (Donau / Danube, Chang Jiang / Yangtze)
+  and group names ("Great Lakes"). The hand-written, cited list of decision 4 is still needed,
+  and the maintainers choose its waters and sources when step 12 starts; these are a starting
+  point to choose from.
+- **The per-language names take sides on their own.** For the sea between Korea and Japan,
+  Natural Earth's English name is "Sea of Japan", its Korean field is 동해 ("East Sea"), and its
+  alternate is "East Sea". Showing each visitor only their language's field would show each a
+  different, unattributed name. For the waters on the disputed list, the map should show both
+  names, attributed, whatever the visitor's language.
+- Each feature carries a `wikidataid`, usable as a cross-reference only (as everywhere here).
+
+### Flag sources: not checked yet
+
+Wikidata (flag statements and their references) and Wikimedia Commons (each flag file's
+license) couldn't be reached from the session that measured this: their sites were blocked by
+its network settings. This check (a sample of Wikidata's flag statements for our polities: does
+each give a period and a reference; and the licenses of the files they point to) is still to do,
+from a session that can reach www.wikidata.org and commons.wikimedia.org, before step 13
+(flags) starts.
