@@ -111,10 +111,10 @@ as approximate, with the measurement repeated for a few other dates before it's 
 **How Cliopatria's shapes were made: still open.** Its README (at the pinned commit) says only
 that its polities are "sampled at varying timesteps and spatial scales", and refers to the
 authors' paper (*Scientific Data*, 2025) and preprint for how they were built. Neither could be
-reached from the session that measured this (their sites were blocked). A maintainer, or a later
-session that can reach nature.com or osf.io, should read the paper's methods for the base map
-the coasts were drawn against and any simplification, and note it here. Option B doesn't depend
-on it: the margin's width comes from the measured shapes, not from a stated resolution.
+reached by script (see the end of section 5); a maintainer can read the paper's methods in a
+browser and note here the base map the coasts were drawn against and any simplification. Option B
+doesn't depend on it: the margin's width comes from the measured shapes, not from a stated
+resolution.
 
 ## 5. Water names and flag sources (2026-11-21)
 
@@ -149,11 +149,34 @@ Natural Earth). Checked from its repository:
   names, attributed, whatever the visitor's language.
 - Each feature carries a `wikidataid`, usable as a cross-reference only (as everywhere here).
 
-### Flag sources: not checked yet
+### Flag sources (checked 2026-11-21)
 
-Wikidata (flag statements and their references) and Wikimedia Commons (each flag file's
-license) couldn't be reached from the session that measured this: their sites were blocked by
-its network settings. This check (a sample of Wikidata's flag statements for our polities: does
-each give a period and a reference; and the licenses of the files they point to) is still to do,
-from a session that can reach www.wikidata.org and commons.wikimedia.org, before step 13
-(flags) starts.
+Checked for the 48 Wikidata IDs in `data/polities/` (our own polities), from Wikidata's flag
+image statements (P41) and Wikimedia Commons' license for each file they name:
+
+| | Count |
+|---|---|
+| Polities with a flag statement | 40 of 48 |
+| Flag statements | 95 |
+| With a period (start or end time) | 63 (32 without) |
+| **Whose reference cites a source** | **1** |
+| Whose only reference is "imported from Wikipedia" | 10 |
+| With some other reference | 2 |
+| With no reference at all | 82 |
+| Distinct flag files | 84: 79 public domain on Commons, 3 CC BY-SA 3.0, 2 CC BY-SA 4.0 |
+
+**What this means for step 13 (flags):** licensing is not the obstacle; sourcing is. Under ground
+rule 1 a Wikidata statement counts only as good as its reference, and almost none of these have
+one, so Wikidata can point at a candidate flag and its file but can't be the flag's source. Each
+flag we show needs its own citable source for the flag and its period (decision 5 already makes
+"No flag on record" the default). That makes step 13 mostly research per flag, not an import: a
+reason to keep it where the plan's cut lines put it, and to start, if at all, with the few
+polities whose flags a source we already cite describes. The CC BY-SA files can be used with
+attribution and the share-alike notice, kept in their own folder (ground rule 5).
+
+### How Cliopatria's shapes were made (still open)
+
+Reaching its paper needs more than the sites allowed for it: Nature's article page sends readers
+through a sign-in host (idp.nature.com), and OSF serves the preprint's file from other hosts.
+A maintainer can read the paper's methods in a browser (*Scientific Data*, 2025, "Cliopatria")
+and note here what coastline the shapes were drawn against and whether they were simplified.
