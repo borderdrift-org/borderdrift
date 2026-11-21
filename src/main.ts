@@ -179,6 +179,30 @@ mapKey.addEventListener('keydown', (event) => {
   event.stopPropagation(); // the panel also closes on Escape; this one only folds the key
 });
 
+// The lighter map (Phase 6 step 4, decision 6): a switch in the key, remembered in this browser.
+// Until a visitor chooses, it follows the device: on when it asks for reduced motion.
+const LIGHTER_MAP = 'borderdrift.lighterMap';
+const lighterSwitch = document.getElementById('lighter-map') as HTMLInputElement;
+let lighter = matchMedia('(prefers-reduced-motion: reduce)').matches;
+try {
+  const saved = localStorage.getItem(LIGHTER_MAP);
+  if (saved !== null) lighter = saved === '1';
+} catch {
+  // Storage blocked: use the device's setting.
+}
+lighterSwitch.checked = lighter;
+historical.setLight(lighter);
+document.documentElement.toggleAttribute('data-lighter', lighter);
+lighterSwitch.addEventListener('change', () => {
+  historical.setLight(lighterSwitch.checked);
+  document.documentElement.toggleAttribute('data-lighter', lighterSwitch.checked);
+  try {
+    localStorage.setItem(LIGHTER_MAP, lighterSwitch.checked ? '1' : '0');
+  } catch {
+    // Storage blocked: the choice lasts until the page is closed.
+  }
+});
+
 // The "Early preview" note shows until the visitor dismisses it, then stays away. It's remembered
 // in this browser only; if the browser blocks storage, the note simply shows again next visit.
 const NOTICE_DISMISSED = 'borderdrift.previewNoticeDismissed';

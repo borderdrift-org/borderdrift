@@ -120,6 +120,12 @@
         <span class="legend-item"><span class="legend-second-line" aria-hidden="true"></span><span data-i18n="legend.second"></span></span>
         <span class="legend-item legend-differ-item"><span class="legend-differ" aria-hidden="true"></span><span data-i18n="legend.differ"></span></span>
       </p>
+      <!-- The lighter map (Phase 6 step 4): src/main.ts remembers it, and turns it on by itself
+           for visitors who ask their device for reduced motion. -->
+      <label class="map-key-light">
+        <input type="checkbox" id="lighter-map" />
+        <span><strong data-i18n="legend.lighter"></strong> <span data-i18n="legend.lighterNote"></span></span>
+      </label>
       </div>
       </details>
       <p id="share-status" class="share-status" role="status" aria-live="polite"></p>

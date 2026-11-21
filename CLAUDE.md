@@ -375,6 +375,14 @@ affect everyday work:
   and the timeline (row 4), and the wordmark is `position: fixed` over the map. Keep that row on
   one line at 360 px: measure it after adding a control. The header's `z-index` (3) must stay
   above MapLibre's controls (2).
+- **"No data" and the lighter map** (step 4): `no-data-tint` (a plain fill, below
+  `NO_DATA_PATTERN_ZOOM`, 4) and `no-data` (the hatch, from 4) in `src/map/historical.ts`; the
+  hatch was the costliest layer (docs/measurements). `HistoricalLayers.setLight` makes both
+  "no data" layers the tint at every zoom, sets MapLibre's pixel ratio to 1, and keeps pulses
+  still; `main.ts` drives it from the key's "Lighter map" switch (`#lighter-map`, remembered in
+  `localStorage` as `borderdrift.lighterMap`, default from `prefers-reduced-motion`) and sets
+  `data-lighter` on `<html>` for the key's swatch. Never let it change what the map says, and
+  keep the contested hatch in both modes.
 - **The calmer panel** (S6b): `.panel-header` is sticky. In a record or figure, what it says,
   its dates and its sources are always shown; longer text goes in a `details.panel-more` ("More
   about this record", "How this was measured", "Where sources differ (n)"), styled as a quiet

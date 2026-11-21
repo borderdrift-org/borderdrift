@@ -460,7 +460,35 @@ body {
   width: 16px;
   height: 12px;
   border: 1px solid #b8b0a2;
-  background: repeating-linear-gradient(-45deg, #f3f0e8 0 3px, #b8ad9c 3px 4.5px);
+  /* Half hatched, half tinted: the map hatches "no data" up close and tints it zoomed out. */
+  background:
+    linear-gradient(135deg, #e2dccf 50%, transparent 50%),
+    repeating-linear-gradient(-45deg, #f3f0e8 0 3px, #b8ad9c 3px 4.5px);
+}
+
+/* With the lighter map on, "no data" is only ever the tint. */
+:root[data-lighter] .legend-no-data {
+  background: #e2dccf;
+}
+
+/* The lighter-map switch, at the foot of the key's card. */
+.map-key-light {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #eaeef2;
+  font-size: 0.8rem;
+  color: #424a53;
+  cursor: pointer;
+}
+
+.map-key-light input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
 }
 
 /* --- Territory panel (src/panel/) --- */

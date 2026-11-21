@@ -564,6 +564,19 @@ The vision is large on purpose. These are the levers, in the order to reach for 
 12. **New requests** are placed in the order by the same rule: measure first, then what changes
     tile size or speed, then what adds on top.
 
+**Done so far (after the decisions above):**
+
+- **Step 2, measure before building** (2026-11-20/21): results and a reading of them in
+  [docs/measurements/README.md](measurements/README.md), with `npm run measure-map`,
+  `measure-alignment` and `measure-coast-gaps`. They confirmed the order: the "no data" hatch
+  first; up close, the import's simplification and the coast; option B with about a 15 km margin;
+  flags need a source each (Wikidata's flag statements almost never cite one).
+- **Step 4, the performance pass** (2026-11-21): "no data" is a plain tint below zoom 4 and
+  hatched from zoom 4 (world view 35% faster per frame); a lighter map, a switch in the key and on
+  by itself with reduced motion (3.4× faster per frame on a high-density screen over East Asia).
+  Measured again in section 6 of the measurements. The rest of the plan's likely fixes (merging
+  layers, a pixel cap while moving, label limits) weren't measured to matter enough to do now.
+
 **Question 13 and the show-ready slice, approved 2026-11-20:**
 
 - **Question 13:** the show-ready slice (S1–S6) comes first, after step 1 and before step 2.

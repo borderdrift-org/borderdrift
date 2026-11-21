@@ -246,6 +246,14 @@ function dotsPattern(): ImageData {
   return ctx.getImageData(0, 0, size, size);
 }
 
+/**
+ * "No data" land is hatched up close, but a plain tint below this zoom (Phase 6 step 4): the
+ * pattern was the most expensive layer to draw (docs/measurements/README.md), and zoomed that far
+ * out its lines are mostly noise. The key explains both.
+ */
+const NO_DATA_PATTERN_ZOOM = 4;
+const NO_DATA_TINT = '#e2dccf';
+
 /** A diagonal-line pattern for land with no data. */
 function hatchPattern(): ImageData {
   const size = 16;
@@ -272,6 +280,8 @@ export class HistoricalLayers {
   /** Assertion IDs outlined as a selected event's effects. */
   private effects: string[] = [];
   private ready = false;
+  /** The lighter map (Phase 6 step 4): no patterns for "no data", fewer pixels, still pulses. */
+  private light = false;
   private changes: number[] = [];
   /** The stretch between change days currently shown on the map (see src/map/changes.ts). */
   private shownSegment = -1;
@@ -363,6 +373,25 @@ export class HistoricalLayers {
   }
 
   /** Outlines the selected polity's borders, or removes the outline (null). */
+  /**
+   * The lighter map (Phase 6 step 4, decision 6): "no data" is a plain tint at every zoom instead
+   * of the hatch, the map draws at one pixel per CSS pixel on high-density screens (a quarter of
+   * the pixels on most phones), and event pulses stay still. What the map says doesn't change.
+   */
+  setLight(on: boolean): void {
+    this.light = on;
+    this.map.setPixelRatio(on ? 1 : window.devicePixelRatio || 1);
+    if (this.ready) this.applyLight();
+  }
+
+  private applyLight(): void {
+    for (const id of ['no-data', 'no-data-detail']) {
+      if (!this.map.getLayer(id)) continue;
+      this.map.setPaintProperty(id, 'fill-pattern', this.light ? undefined : 'no-data-hatch');
+      this.map.setPaintProperty(id, 'fill-color', this.light ? NO_DATA_TINT : undefined);
+    }
+  }
+
   setSelected(polity: string | null): void {
     this.selected = polity ?? '';
     if (this.ready) this.map.setGlobalStateProperty('selected', this.selected);
@@ -394,7 +423,7 @@ export class HistoricalLayers {
     // MapLibre positions the element with a transform, so the animation runs on an inner ring.
     element.append(document.createElement('span'));
     const marker = new maplibregl.Marker({ element }).setLngLat([lng, lat]).addTo(this.map);
-    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const still = this.light || matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.setTimeout(() => marker.remove(), still ? 3000 : 1600);
   }
 
@@ -492,9 +521,14 @@ export class HistoricalLayers {
     this.changes = index.eras[this.era].changes;
     map.addImage('no-data-hatch', hatchPattern(), { pixelRatio: 2 });
 
-    // Hatch all land; borders drawn on top cover it wherever we have data.
+    // Mark all land "no data"; borders drawn on top cover it wherever we have data. A plain tint
+    // zoomed out, the hatch from NO_DATA_PATTERN_ZOOM (see there).
     map.addLayer(
-      { id: 'no-data', type: 'fill', source: 'land', paint: { 'fill-pattern': 'no-data-hatch' } },
+      { id: 'no-data-tint', type: 'fill', source: 'land', maxzoom: NO_DATA_PATTERN_ZOOM, paint: { 'fill-color': NO_DATA_TINT } },
+      'coastline',
+    );
+    map.addLayer(
+      { id: 'no-data', type: 'fill', source: 'land', minzoom: NO_DATA_PATTERN_ZOOM, paint: { 'fill-pattern': 'no-data-hatch' } },
       'coastline',
     );
 
@@ -540,6 +574,7 @@ export class HistoricalLayers {
         '<a href="https://www.openhistoricalmap.org/copyright">Borders: OpenHistoricalMap</a>',
     });
     this.ready = true;
+    this.applyLight(); // the "no data" layers exist by now; a lighter map chosen earlier applies
     // Set the global state before adding the layers that read it.
     this.showDay();
     this.setSelected(this.selected || null);

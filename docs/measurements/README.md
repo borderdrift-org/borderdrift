@@ -180,3 +180,32 @@ Reaching its paper needs more than the sites allowed for it: Nature's article pa
 through a sign-in host (idp.nature.com), and OSF serves the preprint's file from other hosts.
 A maintainer can read the paper's methods in a browser (*Scientific Data*, 2025, "Cliopatria")
 and note here what coastline the shapes were drawn against and whether they were simplified.
+
+## 6. After step 4, the performance pass (2026-11-21)
+
+Raw numbers: [map-speed-step4.md](map-speed-step4.md) (`npm run measure-map` again, same setup as
+section 1). Two changes, both from section 1's measurements:
+
+**1. "No data" is a plain tint below zoom 4, and hatched from zoom 4.** A side-by-side test first
+(three runs each, panning): the pattern itself was the cost; switching off its edge smoothing
+changed nothing, and a plain tint made frames 21% faster over East Asia and 13% over the world.
+After the change, a whole frame over the world at zoom 2 went from **227 ms to 148 ms (35%
+faster)**; over East Asia at zoom 4, where the hatch is still drawn, the frame time is unchanged
+within the noise (152 and 142 ms). Phones open at zoom 3, so their opening view gets the tint.
+
+**2. A lighter map,** a switch in the key: "no data" a plain tint at every zoom, the map drawn at
+one pixel per screen point on high-density screens, and event pulses still. On a screen with
+twice the pixel density (most phones, many laptops), three runs each, panning:
+
+| View | Normal | Lighter map |
+|---|---|---|
+| East Asia, zoom 4 | 396 ms a frame | **115 ms** (3.4× faster) |
+| The world, zoom 2 | 317 ms | **154 ms** (2× faster) |
+
+Most of that is the pixel density. It's on by itself for visitors whose device asks for reduced
+motion, and a visitor's own choice is remembered in their browser. What the map says doesn't
+change, and contested areas keep their hatch either way.
+
+**Still the same:** an idle map draws nothing. Era jumps still leave the map unfinished for
+about 1 second in software; that's step 6. Real speeds still need the own-machine checklist
+(section 2).

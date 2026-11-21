@@ -25,7 +25,10 @@ export const en = {
   'map.status.mandate': 'Mandate of {holder}',
   'map.status.occupied': 'Occupied by {holder}',
   'map.status.other': 'Held by {holder}',
-  'legend.noData': 'No data yet',
+  'legend.noData': 'No data yet (hatched up close, a plain tint zoomed out)',
+  // The lighter-map switch in the key (Phase 6 step 4).
+  'legend.lighter': 'Lighter map',
+  'legend.lighterNote': '(faster on older computers and phones: "no data" stays a plain tint, and fewer pixels are drawn)',
   'legend.edge': 'Edge of OpenHistoricalMap’s area: beyond it, the borders are Cliopatria’s',
   'legend.baseline':
     'Softer lines beyond that edge: borders per Cliopatria, year by year and approximate (it doesn’t separate control from legal rule)',
