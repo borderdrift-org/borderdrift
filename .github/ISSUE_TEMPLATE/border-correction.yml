@@ -14,13 +14,13 @@ body:
     attributes:
       value: |
         Thank you for helping. Every correction needs a **source**, not personal knowledge: see
-        [what counts as a source](https://github.com/chronoatlas-org/chronoatlas/blob/main/CONTRIBUTING.md#what-counts-as-a-source).
+        [what counts as a source](https://github.com/borderdrift-org/borderdrift/blob/main/CONTRIBUTING.md#what-counts-as-a-source).
 
         **Border lines themselves are fixed upstream in [OpenHistoricalMap](https://www.openhistoricalmap.org)**
         (OHM) and then re-imported; we never hand-edit imported lines here. If you have already
         fixed a line in OHM, link your change in the field for it below. Claims, recognition,
         contested status, and events are fixed in this repository. See
-        [Drawing or fixing a border line](https://github.com/chronoatlas-org/chronoatlas/blob/main/CONTRIBUTING.md#drawing-or-fixing-a-border-line).
+        [Drawing or fixing a border line](https://github.com/borderdrift-org/borderdrift/blob/main/CONTRIBUTING.md#drawing-or-fixing-a-border-line).
   - type: input
     id: territory
     attributes:
@@ -36,7 +36,7 @@ body:
       description: >-
         When the problem applies, written as an EDTF date: a day (`1901-05-12`), a month
         (`1901-05`), a year (`1901`), or a range (`1901-05/1901-09`). See the
-        [data format guide](https://github.com/chronoatlas-org/chronoatlas/blob/main/docs/data-format.md#conventions).
+        [data format guide](https://github.com/borderdrift-org/borderdrift/blob/main/docs/data-format.md#conventions).
       placeholder: e.g. 1901-05/1901-09
     validations:
       required: true
@@ -74,7 +74,7 @@ body:
     attributes:
       label: Link to the map view (optional)
       description: Copy the address from the site, or use its "Copy link" button. It records the date and the view.
-      placeholder: https://chronoatlas-org.github.io/chronoatlas/#d=...
+      placeholder: https://borderdrift-org.github.io/borderdrift/#d=...
   - type: textarea
     id: suggested_fix
     attributes:

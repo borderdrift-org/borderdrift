@@ -306,7 +306,7 @@ Every step keeps `npm run typecheck`, `npm test`, `npm run validate`, and the bu
   - **First runs:** the first stopped at opening the pull request, because the setting has to be
     turned on in the organization before the repository (the guide now says so), and left its
     branch behind; the workflow now deletes its branch when that happens. The second opened a real
-    re-import, [pull request 24](https://github.com/chronoatlas-org/chronoatlas/pull/24), with the
+    re-import, [pull request 24](https://github.com/borderdrift-org/borderdrift/pull/24), with the
     data checked, the summary posted, and the build check passed.
   - **What it taught the summary:** a whole re-import went over GitHub's comment limit, so the side
     effects now come first, sections shrink until the comment fits, names that changed the same

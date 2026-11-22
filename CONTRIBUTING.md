@@ -1,4 +1,4 @@
-# Contributing to chronoatlas
+# Contributing to BorderDrift
 
 Thank you for helping. Borders are politically sensitive, and people care deeply about how their
 history is shown. This project handles that by being transparent: every border and event is
@@ -27,7 +27,7 @@ Everyone taking part follows our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ### Report a problem
 
-[Open an issue](https://github.com/chronoatlas-org/chronoatlas/issues/new/choose) on GitHub and
+[Open an issue](https://github.com/borderdrift-org/borderdrift/issues/new/choose) on GitHub and
 pick a form:
 
 - **Border correction:** a border, date, or name that looks wrong.

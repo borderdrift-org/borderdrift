@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/shape.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/shape.schema.json",
   "title": "Shape",
   "description": "Geometry only: one GeoJSON Feature per file (*.geojson). Its meaning comes from assertions that refer to its ID. Geometry itself is checked separately by the validator.",
   "type": "object",

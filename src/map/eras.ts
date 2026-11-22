@@ -22,3 +22,11 @@ export function eraOf(eras: readonly Era[], day: number): number {
 
 /** Whether something drawn over the days [s0, e0) appears in an era. */
 export const inEra = (era: Era, s0: number, e0: number): boolean => s0 < era.end && e0 > era.start;
+
+/**
+ * The first day of the era after the one holding `day`: where playback pauses (Phase 6 step S2),
+ * so a play never shows the map empty while the next era's tiles load.
+ */
+export function eraEnd(eras: readonly Era[], day: number): number {
+  return eras[eraOf(eras, day)].end;
+}

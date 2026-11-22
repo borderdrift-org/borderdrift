@@ -5,7 +5,10 @@ through history. It has a world map with a zoomable timeline (from millennia dow
 border changes linked to the events behind them, and transparent, sourced corrections. It is a
 static site hosted on GitHub Pages.
 
-Repo: https://github.com/chronoatlas-org/chronoatlas. The plan was approved on 2026-09-26; see
+The project is called **BorderDrift** (written that way in titles and text; `borderdrift` in
+addresses, package names, and IDs). It was called chronoatlas until 2026-11-20.
+
+Repo: https://github.com/borderdrift-org/borderdrift. The plan was approved on 2026-09-26; see
 [Architecture](#architecture) below.
 
 ## Ground rules (always apply; they override convenience)
@@ -66,9 +69,10 @@ labels as well. The site must work on phones.
 
 This project touches nationalist sensitivities, so maintainers stay pseudonymous.
 
-- The project's only public identities are the GitHub organization `chronoatlas-org` (which
-  owns the repo) and the account `chronoatlas-project` (which owns the organization and makes the
-  commits). Conduct reports go to `chronoatlas.conduct@gmail.com`.
+- The project's only public identities are the GitHub organization `borderdrift-org` (which
+  owns the repo) and the account `borderdrift` (which owns the organization and makes the
+  commits; it was `chronoatlas-project` before 2026-11-20, same account). Conduct reports go to
+  `chronoatlas.conduct@gmail.com` (kept under the old name until a new inbox exists).
 - Never put a maintainer's personal details anywhere public: not in files, commits, issues, pull
   requests, or comments. That includes real names, personal accounts or usernames, location,
   school, employer, or family. Write as "the maintainers".
@@ -78,7 +82,7 @@ This project touches nationalist sensitivities, so maintainers stay pseudonymous
 - Before pushing, check that `git log --format='%an <%ae> %ad'` shows only the project identity
   and `+0000`.
 - The GitHub CLI also holds the maintainer's personal login. Check that `gh auth status` shows
-  `chronoatlas-project` as active before any GitHub operation on this project.
+  `borderdrift` as active before any GitHub operation on this project.
 
 ## Review checklist for data changes (for humans and for Claude)
 
@@ -123,6 +127,11 @@ The full design is in [docs/architecture.md](docs/architecture.md). The dataset 
   because GitHub doesn't redirect Pages URLs after a transfer, so the site's address must not
   change again. Organizations also allow triage-only moderator roles. The organization requires
   two-factor authentication for all members.
+  - **Renamed 2026-11-20:** to `borderdrift-org/borderdrift` (organization and repo) and the
+    account `borderdrift`, because the old name was too close to an existing commercial site.
+    GitHub redirects the old repo links, but **not** the old Pages address, so links to
+    `chronoatlas-org.github.io/chronoatlas` no longer work. The new address must not change
+    again.
 - **Figures (statistics)** are part of the data model. Each is sourced, dated, ranged where
   possible, and carries a `basis`: `polity-territory`, `present-day-borders`, or
   `computed-from-shape`. Never interpolate between estimates. Never attach a figure based on
@@ -324,6 +333,68 @@ with an effort setting for each step. The ones that affect everyday work:
   its own `Area`, credited to it.
 - **Translations** are published only after a native speaker's review.
 
+**Phase 6 plan approved (2026-11-20)**, with all its recommendations, and option B for the
+coast gaps (question 3). The plan and its decisions are in
+[docs/phase-6-plan.md](docs/phase-6-plan.md#16-decisions); the show-ready slice (S1–S6) came first,
+then step 2 (measure before building). Still the maintainers' to choose when their steps come:
+the disputed water names and their sources (step 12).
+The show-ready slice: S5 chose the hybrid layout, and S6 was built as S6a (the bar) and S6b (the panel). The ones that
+affect everyday work:
+
+- **The opening view** (S1) is in `src/opening.ts`: the day of `OPENING_EVENT`
+  (`mukden-incident-1931`), which `src/opening.test.ts` checks against the event file, and a
+  camera position over Manchuria (one zoom level further out on phones, `PHONE_ZOOM`). Choose a new opening event from `data/events/`, never a date
+  from memory.
+- **The map key starts folded** on every screen (no `open` in `index.html`).
+- **The "Early preview" note** is hidden until `main.ts` reads `localStorage`
+  (`borderdrift.previewNoticeDismissed`); "Got it" sets it. Every storage call is in `try`, so a
+  browser that blocks storage just shows the note again. Phones still don't show it at all.
+- **Plays pause at an era's end** (S2): the timeline's `playStopsAt` option gets the end of the
+  era holding the day after the playhead (`eraEnd` in `src/map/eras.ts`), so pressing play on an
+  era's last day carries on into the next. It pauses on the day before and shows
+  `timeline.pausedAtEra`. Remove it only once the map keeps old tiles until new ones load (Phase 6
+  step 6).
+- **The play button** has a visible label on wider screens (`.timeline-play-label`, hidden on
+  phones) and the class `timeline-play-invite` until the first play, which pulses only under
+  `prefers-reduced-motion: no-preference`.
+- **The share preview** (S3): Open Graph and Twitter tags in `index.html`, with absolute
+  addresses (crawlers run no scripts and never see the `#…` part, so every link gets the same
+  preview). `public/preview.png` is 1200×630: the site at `#d=1934-06-01&m=4/42.5/121`, with the
+  "Early preview" note dismissed and every layer whose ID starts with `contested`, `baseline`,
+  `differ`, `dejure`, `second` or `data-edge` hidden (`map.setLayoutProperty(id, 'visibility',
+  'none')`), so it shows only OpenHistoricalMap (CC0) and Natural Earth (public domain) and stays
+  CC0 (listed in `CREDITS.md`). Never make it from a view that shows CShapes (NC-SA) or Cliopatria
+  (CC BY, needs credit) without crediting them in the image. `npm run record-demo -- --preview`
+  remakes it.
+- **The README's GIF** (S4): `docs/demo.gif`, made by `scripts/record-demo.ts` from `npm run dev`
+  (the dev build exposes `window.map`, `timeline` and `historical`). It steps the timeline with
+  `timeline.setDay` and waits for the map's `idle` before each screenshot, so it's the same every
+  time and never catches a half-loaded era; it hides the same layers as the preview. Its view
+  stays inside OpenHistoricalMap's East Asia area, because outside it the hidden baseline would
+  leave "no data" hatching. Playwright (pinned, with its browser installed by
+  `npx playwright install chromium`), gifenc and pngjs are dev dependencies for it only; gifenc
+  has no types, so `scripts/lib/gifenc.d.ts` declares what's used.
+- **The top bar** (S6a): `.app-header` shares the map's grid cell (column 1, row 1), so it spans
+  the map but never the panel; `.app-header-top` is `display: contents`, and `order` places the
+  wordmark, view switch, key and buttons. MapLibre's top-right controls move down 52 px. The
+  key is a `<details>` whose `.map-key-body` is a card; `main.ts` folds it on a click elsewhere or
+  Escape. On phones (`max-width: 600px`) the bar is grid row 3, between the panel's sheet (row 2)
+  and the timeline (row 4), and the wordmark is `position: fixed` over the map. Keep that row on
+  one line at 360 px: measure it after adding a control. The header's `z-index` (3) must stay
+  above MapLibre's controls (2).
+- **"No data" and the lighter map** (step 4): `no-data-tint` (a plain fill, below
+  `NO_DATA_PATTERN_ZOOM`, 4) and `no-data` (the hatch, from 4) in `src/map/historical.ts`; the
+  hatch was the costliest layer (docs/measurements). `HistoricalLayers.setLight` makes both
+  "no data" layers the tint at every zoom, sets MapLibre's pixel ratio to 1, and keeps pulses
+  still; `main.ts` drives it from the key's "Lighter map" switch (`#lighter-map`, remembered in
+  `localStorage` as `borderdrift.lighterMap`, default from `prefers-reduced-motion`) and sets
+  `data-lighter` on `<html>` for the key's swatch. Never let it change what the map says, and
+  keep the contested hatch in both modes.
+- **The calmer panel** (S6b): `.panel-header` is sticky. In a record or figure, what it says,
+  its dates and its sources are always shown; longer text goes in a `details.panel-more` ("More
+  about this record", "How this was measured", "Where sources differ (n)"), styled as a quiet
+  link. Never fold away a record's sources or the credits.
+
 **CShapes decisions (2026-09-27)**, made while importing it:
 
 - **Columns from the R package:** its status, owner, and "borders defined" columns come from the
@@ -348,6 +419,10 @@ LTS, and the GitHub CLI are installed.
 `npm run build`, `npm run preview`, `npm run typecheck`, `npm test`, `npm run test:watch`,
 `npm run validate`, `npm run summarize-changes` (compares `data/` with `origin/main`; options at the
 top of the script), `npm run suggest-crosswalk` (options at the top of the script),
+`npm run record-demo` (the README's GIF, or `-- --preview` the share preview, from `npm run dev`),
+`npm run measure-map` (frame times and layer costs from `npm run dev`, in software; for comparing only),
+`npm run measure-alignment` (drawn borders against their sources and the coast, from `public/data/`),
+`npm run measure-coast-gaps` (the land no Cliopatria shape covers, by distance to the coast, from `data/`),
 `npm run measure-ohm` (OpenHistoricalMap's boundaries by region and period; its server is blocked in
 some environments, so the "Measure OpenHistoricalMap's coverage" workflow runs it on GitHub),
 `npm run build-data`, `npm run import:ohm`, `npm run import:cshapes`, and
@@ -426,6 +501,16 @@ some environments, so the "Measure OpenHistoricalMap's coverage" workflow runs i
     cover the same land.
   - The zip is read by `scripts/lib/zip.ts`, and the import needs a larger Node memory limit
     (set in its npm script).
+  - **Sourced date corrections** (2026-11-20, the maintainers' decision after the first outside
+    contribution, pull request 56): `data/imports/cliopatria/date-transitions.json` can move the
+    year boundary between existing rows to an exact day, when a named source gives it. The
+    import checks each original endpoint (`replaces`) and stops if it has changed; shapes, IDs,
+    and Cliopatria's own years (in the locator and notes) are kept. Each record credits each
+    source only for what it says: Cliopatria's citation gets a `note` that the changed date isn't
+    its, and the dating source is added as a second citation. Never use it to invent a change
+    Cliopatria doesn't have, or to change a shape. The first case: Sudan and South Sudan split on
+    9 July 2011 (South Sudan's independence), from the US State Department's Guidance Bulletin
+    No. 30. `scripts/cliopatria-transition.test.ts` checks it.
 - **Contested areas** (`scripts/lib/contested.ts`, Phase 2 step 9):
   - **What they are:** where the default map's administering polity and a de jure source's
     sovereign or occupying state differ on the same days. The crosswalk decides what counts as
@@ -565,7 +650,7 @@ some environments, so the "Measure OpenHistoricalMap's coverage" workflow runs i
 - MapLibre waits for the browser's animation frames, which don't run while the page is hidden.
   A map that "never loads" in a background tab may just be paused.
 - **Deployment:** `.github/workflows/deploy.yml` builds pull requests and deploys `main` to
-  GitHub Pages (https://chronoatlas-org.github.io/chronoatlas/). The Pages source is "GitHub
+  GitHub Pages (https://borderdrift-org.github.io/borderdrift/). The Pages source is "GitHub
   Actions", so no Jekyll processing and no `gh-pages` branch. Actions are pinned to full commit
   SHAs with a version comment. To update one, look up the new release's commit, and keep the
   permissions minimal.

@@ -114,7 +114,7 @@ export interface FigureEntry {
   partOf?: string;
   /** Coastal waters inside the border that the land area leaves out, in km². */
   waterKm2?: number;
-  /** The source that computed it from its own shape (Cliopatria's `Area`), when not chronoatlas. */
+  /** The source that computed it from its own shape (Cliopatria's `Area`), when not BorderDrift. */
   computedBy?: string;
   sources: Citation[];
   notes?: string;
@@ -175,6 +175,7 @@ export interface BorderChange {
   record: string;
   relation: string;
   source: Citation;
+  additionalSources?: Citation[];
 }
 
 /** public/data/changes/<version>.json: one era's changes, and the names of their polities. */
@@ -928,6 +929,7 @@ export function describeNearby(
     .slice(0, limit)
     .map((e) => ({ id: e.id, title: e.title, date: e.date ? describeEventDate(e.date) : formatDay(e.s0) }));
 
+  const citationsOf = (change: BorderChange) => [change.source, ...(change.additionalSources ?? [])];
   const nearChanges = changes
     .filter((c) => c.day >= left && c.day <= right)
     .sort((a, b) => distance(a.day) - distance(b.day) || a.day - b.day)
@@ -941,11 +943,11 @@ export function describeNearby(
         label: t(c.kind === 'start' ? 'nearby.recordStarts' : c.kind === 'change' ? 'nearby.recordChanges' : 'nearby.recordEnds', { relation }),
         date: describeDate(c.date),
         day: c.day,
-        sources: sourceLines([c.source], sources),
+        sources: sourceLines(citationsOf(c), sources),
       };
     });
 
-  const nearChangeSources = changes.filter((c) => nearChanges.some((n) => n.key === `${c.record}-${c.kind}`)).map((c) => c.source);
+  const nearChangeSources = changes.filter((c) => nearChanges.some((n) => n.key === `${c.record}-${c.kind}`)).flatMap(citationsOf);
   return {
     credits: creditsFor(nearChangeSources, sources),
     title: t('nearby.title', { date: formatDay(day) }),

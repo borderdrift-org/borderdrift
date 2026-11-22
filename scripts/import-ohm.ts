@@ -67,7 +67,7 @@ const CONFIG = {
   coordinateDecimals: 4,
 };
 const ENDPOINT = 'https://overpass-api.openhistoricalmap.org/api/interpreter';
-const USER_AGENT = 'chronoatlas-import/0.1 (https://github.com/chronoatlas-org/chronoatlas)';
+const USER_AGENT = 'borderdrift-import/0.1 (https://github.com/borderdrift-org/borderdrift)';
 const SOURCE_ID = 'openhistoricalmap';
 const OUT = join(DATA_DIR, 'imports', 'openhistoricalmap');
 const RAW_FILE = join(OUT, 'raw', 'overpass.json');

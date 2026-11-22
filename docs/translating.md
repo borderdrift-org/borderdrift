@@ -1,4 +1,4 @@
-# Translating chronoatlas
+# Translating BorderDrift
 
 Thank you for helping. This guide covers how to add or improve a language, and the words that need
 the most care. A translation is published only after a second person who speaks the language

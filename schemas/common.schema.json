@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/common.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/common.schema.json",
   "title": "Shared definitions",
   "$defs": {
     "id": {

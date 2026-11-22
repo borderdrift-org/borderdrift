@@ -7,8 +7,10 @@
 export const en = {
   'app.previewNotice':
     'Early preview. Borders as administered come from OpenHistoricalMap in East Asia, 1900–1950, and from Cliopatria elsewhere; legal borders from CShapes 2.0. Click a territory for details.',
+  // Dismisses the "Early preview" note for good (in this browser).
+  'app.dismissNotice': 'Got it',
   'app.mapLabel': 'Map',
-  'app.title': 'chronoatlas · {date}',
+  'app.title': 'BorderDrift · {date}',
   'legend.title': 'Map key',
   // Words drawn on the map itself.
   'map.contested': 'Contested',
@@ -23,7 +25,10 @@ export const en = {
   'map.status.mandate': 'Mandate of {holder}',
   'map.status.occupied': 'Occupied by {holder}',
   'map.status.other': 'Held by {holder}',
-  'legend.noData': 'No data yet',
+  'legend.noData': 'No data yet (hatched up close, a plain tint zoomed out)',
+  // The lighter-map switch in the key (Phase 6 step 4).
+  'legend.lighter': 'Lighter map',
+  'legend.lighterNote': '(faster on older computers and phones: "no data" stays a plain tint, and fewer pixels are drawn)',
   'legend.edge': 'Edge of OpenHistoricalMap’s area: beyond it, the borders are Cliopatria’s',
   'legend.baseline':
     'Softer lines beyond that edge, and where OpenHistoricalMap has no border yet: borders per Cliopatria, year by year and approximate (it doesn’t separate control from legal rule)',
@@ -132,6 +137,12 @@ export const en = {
   'panel.names': 'Names ({count})',
   'panel.nameLocal': 'local name',
   'panel.period': '{start} – {end}',
+  // Opens a record's border-line precision and notes.
+  'panel.moreAboutRecord': 'More about this record',
+  // Opens the list of places where the second opinion (Cliopatria) differs from the map.
+  'panel.differCount': 'Where sources differ ({count})',
+  // Opens how a figure (such as a land area) was worked out.
+  'panel.howMeasured': 'How this was measured',
   'panel.began': 'Began',
   'panel.ended': 'Ended',
   'panel.border': 'Border line',
@@ -167,12 +178,12 @@ export const en = {
   'figure.uncertain':
     'Some of those records may not have begun yet, or may already have ended, on this date (their dates are known only to the month or year), so the area held may have been smaller.',
   'figure.computed':
-    'Computed by chronoatlas: the area inside this border and inside Natural Earth’s present-day coastline (1:10m; lakes count as land), measured on the globe. Approximate: coastlines have changed since, for example through land reclamation, and the figure is rounded to 2 significant figures.',
+    'Computed by BorderDrift: the area inside this border and inside Natural Earth’s present-day coastline (1:10m; lakes count as land), measured on the globe. Approximate: coastlines have changed since, for example through land reclamation, and the figure is rounded to 2 significant figures.',
   'figure.presentDay': 'Counted within present-day borders ({detail}), not this polity’s own territory.',
-  // An area a source gives for its own shape (Cliopatria's `Area`), not measured by chronoatlas.
+  // An area a source gives for its own shape (Cliopatria's `Area`), not measured by BorderDrift.
   'figure.area': 'Area',
   'figure.computedBy':
-    'As {source} gives it for this record, from its own shape; not measured by chronoatlas, so it may count land and water differently from the land areas measured here. Rounded to 2 significant figures.',
+    'As {source} gives it for this record, from its own shape; not measured by BorderDrift, so it may count land and water differently from the land areas measured here. Rounded to 2 significant figures.',
   'figure.asOf': 'The nearest estimate to this date: {date}.',
   // A de jure unit's record, linked by the crosswalk (see data/imports/cshapes-2-0/).
   'panel.heldAs': '{relation}, as “{name}”',
@@ -197,6 +208,8 @@ export const en = {
     'Drag the timeline to move through time. Scroll or pinch to zoom. Arrow keys step, Page Up and Page Down take bigger steps, + and − zoom, [ and ] jump to the previous or next event, and Space plays or pauses.',
   'timeline.play': 'Play',
   'timeline.pause': 'Pause',
+  // Shown when a play pauses by itself at the edge of a stretch of the map's data (an era).
+  'timeline.pausedAtEra': 'Paused while the next period loads. Press play to carry on.',
   'timeline.zoomIn': 'Zoom in on the timeline',
   'timeline.zoomOut': 'Zoom out on the timeline',
   'timeline.speed': 'Playback speed',

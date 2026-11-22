@@ -5,18 +5,47 @@
     <!-- viewport-fit=cover lets the page use the full screen on phones with notches; the CSS
          keeps controls clear of the notch and home indicator with env(safe-area-inset-*). -->
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>chronoatlas</title>
+    <title>BorderDrift</title>
     <meta
       name="description"
       content="An open-source interactive map of how the world's borders changed through history, with every border and event traced to a named source."
     />
+    <!-- The preview chat apps and social sites show for a shared link (Phase 6 step S3). Crawlers
+         don't run scripts or see the part of a link after "#", so every link gets this one
+         preview, and the addresses must be absolute. public/preview.png shows only
+         OpenHistoricalMap (CC0) and Natural Earth (public domain) layers; CLAUDE.md says how it
+         was made. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BorderDrift" />
+    <meta property="og:title" content="BorderDrift: borders through time, with sources" />
+    <meta
+      property="og:description"
+      content="An open-source interactive map of how the world's borders changed through history, with every border and event traced to a named source."
+    />
+    <meta property="og:url" content="https://borderdrift-org.github.io/borderdrift/" />
+    <meta property="og:image" content="https://borderdrift-org.github.io/borderdrift/preview.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="The BorderDrift map on 1 June 1934, showing Manchukuo, China, Korea and Japan, with the timeline below."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <!-- Text in elements with data-i18n comes from the translation catalogs (src/i18n);
          data-i18n-label sets a translated accessible label and tooltip. -->
     <header class="app-header">
       <div class="app-header-top">
-        <h1>chronoatlas</h1>
+        <!-- The wordmark: a dashed old border and a solid new one, drifted apart (Phase 6 step S6a).
+             The heading's text is still "BorderDrift" for screen readers and search. -->
+        <h1 class="wordmark">
+          <svg viewBox="0 0 26 26" aria-hidden="true">
+            <path class="wordmark-old" d="M4 9 L11 4 L20 7 L22 15 L15 22 L6 19 Z" />
+            <path class="wordmark-new" d="M6 11 L13 6 L22 9 L23 17 L16 23 L7 21 Z" />
+          </svg>
+          <span>Border<span class="wordmark-drift">Drift</span></span>
+        </h1>
         <div class="app-header-actions">
           <button
             type="button"
@@ -26,8 +55,9 @@
             aria-controls="panel"
             aria-expanded="false"
           >
+            <!-- A clock, so it doesn't look like the key's icon on phones, where only icons show. -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 6h2v2H4zm4 0h12v2H8zm-4 5h2v2H4zm4 0h12v2H8zm-4 5h2v2H4zm4 0h12v2H8z" />
+              <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm-1 3h2v5.4l3.6 2.1-1 1.7L11 13.6z" />
             </svg>
             <span class="optional-label" data-i18n="nearby.button"></span>
           </button>
@@ -35,11 +65,16 @@
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a3 3 0 1 1 4.2 4.2l-2 2-1.4-1.4 2-2a1 1 0 1 0-1.4-1.4L12 13.4a1 1 0 0 1-1.4 0zm2.8-2.8a1 1 0 0 1 0 1.4l-3.5 3.5a3 3 0 1 1-4.2-4.2l2-2 1.4 1.4-2 2a1 1 0 1 0 1.4 1.4L12 10.6a1 1 0 0 1 1.4 0z" />
             </svg>
-            <span data-i18n="share.button"></span>
+            <span class="optional-label" data-i18n="share.button"></span>
           </button>
         </div>
       </div>
-      <p class="app-notice" data-i18n="app.previewNotice"></p>
+      <!-- A note for first visits, until dismissed (src/main.ts). Hidden until the script checks
+           whether this browser dismissed it before, so it never flashes. -->
+      <div class="app-notice" hidden>
+        <p data-i18n="app.previewNotice"></p>
+        <button type="button" class="notice-dismiss" data-i18n="app.dismissNotice"></button>
+      </div>
       <!-- Which borders the map shows (src/main.ts): as administered, or as legally recognized. -->
       <div class="view-controls">
         <div class="view-switch" role="group" data-i18n-label="view.label">
@@ -50,13 +85,26 @@
             <span class="label-long" data-i18n="view.jure"></span><span class="label-short" data-i18n="view.jureShort"></span>
           </button>
         </div>
-        <button type="button" id="second-opinion" class="second-opinion" aria-pressed="false">
+        <!-- On phones only its icon shows (two outlines, one dotted, like the map's second opinion);
+             data-i18n-label keeps its name for screen readers. -->
+        <button type="button" id="second-opinion" class="second-opinion" aria-pressed="false" data-i18n-label="view.second">
+          <svg class="second-opinion-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="7" width="12" height="12" rx="2" />
+            <rect class="dotted" x="9" y="4" width="12" height="12" rx="2" />
+          </svg>
           <span class="label-long" data-i18n="view.second"></span><span class="label-short" data-i18n="view.secondShort"></span>
         </button>
       </div>
-      <!-- The map key: open on wider screens, folded on phones (src/main.ts). -->
-      <details class="map-key" open>
-      <summary data-i18n="legend.title"></summary>
+      <!-- The map key: starts folded on every screen, so the map comes first (Phase 6 step S1). -->
+      <details class="map-key">
+      <summary>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 5h4v4H4zm6 1h10v2H10zM4 11h4v4H4zm6 1h10v2H10zM4 17h4v4H4zm6 1h10v2H10z" />
+        </svg>
+        <span class="map-key-label" data-i18n="legend.title"></span>
+      </summary>
+      <!-- Opens as a small card under (or, on phones, above) the Key button. -->
+      <div class="map-key-body">
       <p class="legend">
         <span class="legend-item"><span class="legend-no-data" aria-hidden="true"></span><span data-i18n="legend.noData"></span></span>
         <span class="legend-item"><span class="legend-contested" aria-hidden="true"></span><span data-i18n="legend.contested"></span></span>
@@ -72,6 +120,13 @@
         <span class="legend-item"><span class="legend-second-line" aria-hidden="true"></span><span data-i18n="legend.second"></span></span>
         <span class="legend-item legend-differ-item"><span class="legend-differ" aria-hidden="true"></span><span data-i18n="legend.differ"></span></span>
       </p>
+      <!-- The lighter map (Phase 6 step 4): src/main.ts remembers it, and turns it on by itself
+           for visitors who ask their device for reduced motion. -->
+      <label class="map-key-light">
+        <input type="checkbox" id="lighter-map" />
+        <span><strong data-i18n="legend.lighter"></strong> <span data-i18n="legend.lighterNote"></span></span>
+      </label>
+      </div>
       </details>
       <p id="share-status" class="share-status" role="status" aria-live="polite"></p>
     </header>

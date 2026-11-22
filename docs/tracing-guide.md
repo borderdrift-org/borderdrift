@@ -2,7 +2,7 @@
 
 This guide explains how to trace a country's border from a dated, public-domain map into
 [OpenHistoricalMap](https://www.openhistoricalmap.org/) (OHM), so that our importer picks it up
-and it appears on chronoatlas. The tracing happens in OHM, not in this repository. We then
+and it appears on BorderDrift. The tracing happens in OHM, not in this repository. We then
 import OHM's data (see [why borders are drawn in OHM](architecture.md#where-borders-are-drawn)).
 
 It's written for our current import: country borders in East Asia and Europe, 1900–1950. Where OHM's own
@@ -310,7 +310,7 @@ You don't have to edit OHM to help. If a border or its dates look wrong:
 - On the map, select the territory and press **"Report a problem with this border"**. It opens
   GitHub's border correction form with the territory, the date, and a link to the view filled in.
 - Or open the form directly:
-  [new border correction](https://github.com/chronoatlas-org/chronoatlas/issues/new?template=border-correction.yml).
+  [new border correction](https://github.com/borderdrift-org/borderdrift/issues/new?template=border-correction.yml).
   It asks what's wrong, for **a source** (a dated map or document, with a page or sheet), and
   optionally a suggested fix. Filing an issue needs a free GitHub account.
 - If you've traced or fixed a border in OHM yourself, use the same form and put the link to the

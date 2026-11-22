@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://chronoatlas-org.github.io/chronoatlas/schemas/figure.schema.json",
+  "$id": "https://borderdrift-org.github.io/borderdrift/schemas/figure.schema.json",
   "title": "Figures",
   "description": "A list of sourced statistics: 'According to <source>, <polity> had <metric> of <value> as of <date>.'",
   "type": "array",
