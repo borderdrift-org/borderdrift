@@ -209,3 +209,35 @@ change, and contested areas keep their hatch either way.
 **Still the same:** an idle map draws nothing. Era jumps still leave the map unfinished for
 about 1 second in software; that's step 6. Real speeds still need the own-machine checklist
 (section 2).
+
+## 7. What finer OpenHistoricalMap borders would cost (2026-11-22, Phase 6 step 5)
+
+Measured from a fresh download of OpenHistoricalMap's borders for both import areas (East Asia
+and Europe, 1900–1950), re-processed at four simplification levels; nothing was committed and
+`data/` was restored after each run.
+
+| Import simplification | Points | Shapes in the repository |
+|---|---|---|
+| 0.005° (~500 m, today) | 0.93 million | 17.9 MB |
+| 0.002° (~200 m) | 1.76 million | 33.7 MB |
+| 0.001° (~100 m) | 2.79 million | 53.2 MB |
+| 0.0005° (~50 m) | 4.30 million | 82.0 MB |
+
+The published site is 396 MB of real bytes, of which OpenHistoricalMap's tiles are only 17 MB
+(Cliopatria's baseline is 255 MB, the legal view 73 MB). Its tiles built up to zoom 9, in one pass
+(the era split makes real tiles about 1.8 times bigger):
+
+| OpenHistoricalMap tiles | Zooms 0–7 | + zoom 8 | + zoom 9 | Era-split estimate |
+|---|---|---|---|---|
+| East Asia, ~500 m (today's data) | 10 MB | +6.5 MB | +13.9 MB | 17 MB today (to zoom 7) |
+| East Asia + Europe, ~500 m | 20 MB | +12 MB | +27 MB | ~107 MB to zoom 9 |
+| East Asia + Europe, ~100 m | 25 MB | +19 MB | +36 MB | ~79 MB to zoom 8, ~143 MB to zoom 9 |
+
+**Decision (2026-11-22):** ~100 m detail with tiles to zoom 9, which takes the site to about
+520 MB of the 1 GB limit and puts the import's error under half a pixel at zoom 9. It needs a
+re-import, which brings in Europe, so the Europe work (pull requests 48 and 49) is reviewed first.
+
+Seen in the import log, to fix upstream in OpenHistoricalMap: relation 2855675 (Poland) is skipped
+because its border lines don't join into closed rings; relations 2883430 and 2888164 (Kingdom of
+the Netherlands) because their dates give a time of day, which pull request 49 teaches the import
+to read.
