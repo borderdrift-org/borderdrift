@@ -3,7 +3,7 @@
 OpenHistoricalMap's polities, linked to CShapes's units.
 
 Run on 2026-09-29 on the data of the Europe re-import
-([pull request 48](https://github.com/chronoatlas-org/chronoatlas/pull/48), OpenHistoricalMap as of
+([pull request 48](https://github.com/borderdrift-org/borderdrift/pull/48), OpenHistoricalMap as of
 2026-09-29 05:42 UTC), with
 `npm run suggest-crosswalk -- --region=-25,34,45,72 --years=1900,1950 --map=openhistoricalmap --with=cshapes --trial`.
 Until these links are reviewed, Europe 1900–1950 reads "Not yet checked against legal borders
